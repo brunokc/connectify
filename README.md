@@ -37,3 +37,6 @@ your network credentials and which template you'd like to use:
 ```shell
 (venv) $ generate-card.py -t card-template.svg "My WiFi Network" "my_wifi_p@ssw0rd" -o card.svg
 ```
+
+After that, you can print your card (card.svg in the example above) and show it
+to your friends or guests when they need to connect to your Wi-Fi network.
