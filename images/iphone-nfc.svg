@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<svg width="277" height="353" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    #clock {
+      font-size: 4.5pt;
+      font-weight: bold;
+      font-family: 'Lucida Sans Unicode';
+    }
+
+    #nfc-label {
+      fill: black;
+      font-family: Helvetica;
+      font-size: 60px;
+      font-weight: bold;
+      stroke: black;
+      stroke-width: 0;
+      text-anchor: middle;
+    }
+  </style>
+  <svg id="phone">
+    <title>Layer 1</title>
+    <rect id="border" x="4" y="4" rx="25" height="345" width="170"
+      fill="white" stroke="black" stroke-width="8" />
+    <text id="nfc-label" x="89.53" y="203.59" xml:space="preserve">NFC</text>
+    <!-- <rect id="notch" fill="black" stroke="black" height="18" rx="5" width="75" x="50"
+      y="0.87" /> -->
+    <path id="notch" d="M 0 0 L 21 0 Q 20.5 0 20.5 0.5 L 20.5 1 Q 20.5 4 17.5 4
+      L 3.5 4 Q 0.5 4 0.5 1 L 0.5 0.5 Q 0.5 0 0 0" fill="black"
+      transform="translate(44, 8) scale(4.4, 3.5)"/>
+    <rect id="bubble" fill="#e0e0e0" stroke-width="0" x="40" y="315" width="100"
+      height="15" rx="7.5"/>
+    <text id="clock" x="8%" y="6%">11:42</text>
+    <svg id="bars" x="134" y="16">
+      <g fill="black" transform="">
+        <rect x="1" y="3" width="1.5" height="2" rx="0.5"/>
+        <rect x="3" y="2" width="1.5" height="3" rx="0.5"/>
+        <rect x="5" y="1" width="1.5" height="4" rx="0.5"/>
+        <rect x="7" y="0" width="1.5" height="5" rx="0.5"/>
+      </g>
+    </svg>
+    <svg id="wifi" x="144.5" y="16">
+      <g transform="scale(0.3)">
+        <path d="M 11 16 L 8 13 Q 11 10 14 13 Z M 7 12 Q 11 8 15 12 L 18 9 Q 11 3 4 9 Z M 3 8 Q 11 1 19 8 L 22 5 Q 11 -4 0 5 Z"/>
+      </g>
+    </svg>
+    <svg id="battery" x="152" y="17">
+      <g transform="scale(0.9)">
+        <rect x="1.5" y="0" width="11" height="5" rx="1" stroke-width="0.1" stroke="black" fill="#00000000" />
+        <rect x="2" y="0.5" width="10" height="4" rx="1" stroke-width="0" fill="black"/>
+        <rect x="12.5" y="2" width="1" height="1" fill="black"/>
+      </g>
+    </svg>
+  </svg>
+  <g id="waves" transform="translate(250 120) scale(5) rotate(90)">
+    <path d="M 6 11 Q 12 6 18 11 A 0.5 0.5 0 0 0 19 10 Q 12 4 5 10 A 0.5 0.5 0 0 0 6 11"/>
+    <path d="M 4 9 Q 12 2 20 9 A 0.5 0.5 0 0 0 21 8 Q 12 0 3 8 A 0.5 0.5 0 0 0 4 9"/>
+    <path d="M 2 7 Q 12 -2 22 7 A 0.5 0.5 0 0 0 23 6 Q 12 -4 1 6 A 0.5 0.5 0 0 0 2 7"/>
+  </g>
+</svg>

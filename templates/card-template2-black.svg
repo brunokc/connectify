@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="204px" height="322px" viewBox="0 0 204 322" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    #frame {
+      /* stroke: #555555;
+      fill: #555555; */
+      stroke: none;
+      fill: url(#frame-gradient);
+      stroke-linejoin: round;
+    }
+
+    .frame-gradient-start {
+      stop-opacity: 1;
+      stop-color: #707070;
+    }
+
+    .frame-gradient-end {
+      stop-opacity: 1;
+      stop-color: #303030;
+    }
+
+    #wifi-logo {
+      /* stroke: #e0e0e0; */
+      fill: white;
+    }
+
+    #qrcode {
+      /* transform: translate(-50%, -50%); */
+    }
+
+    .text {
+      fill: white;
+      /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 10pt;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .ssid {
+      fill: white;
+      /* font: bold 10pt Calibri; */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: bold;
+      font-size: 10pt;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .password {
+      fill: white;
+      /* font: bold 11pt Consolas; */
+      font-family: Consolas, 'Courier New', Courier, monospace;
+      font-size: 11pt;
+      font-weight: bold;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+  </style>
+  <defs>
+    <linearGradient id="frame-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" class="frame-gradient-start" />
+      <stop offset="100%" class="frame-gradient-end" />
+    </linearGradient>
+  </defs>
+  <rect id="frame" width="100%" height="100%" rx="10px" ry="10px"/>
+  <svg id="wifi-logo" x="36%" width="28%" height="19%" viewBox="0 0 24 24">
+    <path d="M3.18433 8.49038C5.70721 6.55834 8.80394 5.50269 12.0001 5.50269C15.1962 5.50269 18.2929
+      6.55834 20.8158 8.49038C21.2543 8.82617 21.8843 8.78942 22.2495 8.37512L22.9107 7.62495C23.2759
+      7.21065 23.2377 6.57619 22.8032 6.23524C19.7292 3.82294 15.9268 2.50269 12.0001 2.50269C8.07336
+      2.50269 4.27097 3.82294 1.19692 6.23524C0.762441 6.57619 0.724253 7.21065 1.08945 7.62495L1.7507
+      8.37512C2.1159 8.78942 2.74585 8.82617 3.18433 8.49038Z"/>
+    <path d="M6.76077 12.1041C8.3171 11.0637 10.1533 10.5021 12.0401 10.5021C13.927 10.5021 15.7632
+      11.0637 17.3195 12.1041C17.7787 12.411 18.4067 12.3585 18.7601 11.9341L19.4001 11.1658C19.7536
+      10.7414 19.6982 10.1072 19.247 9.78874C17.1451 8.30554 14.6289 7.50208 12.0401 7.50208C9.45142
+      7.50208 6.9352 8.30554 4.83332 9.78874C4.38208 10.1072 4.32668 10.7414 4.68014 11.1658L5.32014
+      11.9341C5.6736 12.3585 6.30163 12.411 6.76077 12.1041Z"/>
+    <path d="M12.0051 15.5012C11.4067 15.5012 10.8177 15.6205 10.2715 15.8486C9.76182 16.0613 9.13955
+      15.9678 8.81969 15.5176L8.24052 14.7024C7.92066 14.2521 8.02397 13.6211 8.51272 13.364C9.58522
+      12.7996 10.7833 12.5012 12.0051 12.5012C13.2269 12.5012 14.425 12.7996 15.4975 13.364C15.9862
+      13.6211 16.0896 14.2521 15.7697 14.7024L15.1905 15.5176C14.8707 15.9678 14.2484 16.0613 13.7387
+      15.8486C13.1925 15.6205 12.6036 15.5012 12.0051 15.5012Z"/>
+    <path d="M12.0001 21.5C13.1047 21.5 14.0001 20.6046 14.0001 19.5C14.0001 18.3954 13.1047 17.5
+      12.0001 17.5C10.8955 17.5 10.0001 18.3954 10.0001 19.5C10.0001 20.6046 10.8955 21.5 12.0001 21.5Z"/>
+  </svg>
+  <text id="networkLabel" class="text" x="50%" y="25%">NETWORK</text>
+  <text id="networkName" class="ssid" x="50%" y="30%">{network_name}</text>
+  <!-- <text id="networkNotes" class="text" x="50%" y="80%" font-size="8pt">(2.4GHz and 5GHz)</text> -->
+  <text id="passwordLabel" class="text" x="50%" y="40%">PASSWORD</text>
+  <text id="passwordText" class="password" x="50%" y="45%">{network_password}</text>
+
+  <image id="qrcode" width="60%" x="20%" y="53%" href="qrcode-placeholder.png"/>
+  <text id="connectText" class="text" style="font-size: 8pt" x="50%" y="95%">TAP OR SCAN TO CONNECT</text>
+</svg>
