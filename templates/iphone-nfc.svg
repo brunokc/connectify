@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<svg width="277" height="353" xmlns="http://www.w3.org/2000/svg">
+<svg id="iphone-nfc" width="277" height="353" xmlns="http://www.w3.org/2000/svg">
   <style>
     #clock {
       font-size: 4.5pt;
@@ -18,12 +18,9 @@
     }
   </style>
   <svg id="phone">
-    <title>Layer 1</title>
     <rect id="border" x="4" y="4" rx="25" height="345" width="170"
       fill="white" stroke="black" stroke-width="8" />
     <text id="nfc-label" x="89.53" y="203.59" xml:space="preserve">NFC</text>
-    <!-- <rect id="notch" fill="black" stroke="black" height="18" rx="5" width="75" x="50"
-      y="0.87" /> -->
     <path id="notch" d="M 0 0 L 21 0 Q 20.5 0 20.5 0.5 L 20.5 1 Q 20.5 4 17.5 4
       L 3.5 4 Q 0.5 4 0.5 1 L 0.5 0.5 Q 0.5 0 0 0" fill="black"
       transform="translate(44, 8) scale(4.4, 3.5)"/>
