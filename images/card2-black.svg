@@ -90,5 +90,5 @@
   <text id="passwordText" class="password" x="50%" y="45%">my_wifi_p@ssw0rd</text>
 
   <image id="qrcode" width="60%" x="20%" y="53%" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAACD0lEQVR4nO2aS47EMAhEkXKAHClXz5FyAEuMDYXxpHsWszXFIh3bvKxK/Nyi/7dbCBEiRIgQIUKEAhLY0XfOsfH0xfUc/WAuzS5CRSBb6DOgTvZlc8i+4W/pR6gCNHWT/mb32UJQ/jVC1SAxr6mqEVPsjVBZyM4st5xfDghVgUI38LKzLijLPBDU9CNUAJrlKPLN+/G1HCW0L5SWZ+n6ciFUAAqH6EjEH02yAvFTQkWg/jvMvDQSzNiLA3NqQqgO5IWGiAkqXSO3wAjVgcILClremqQRKgNhTCEzt1h7uk47Y49QCWiZWli+ubPuyMxz4vuECkBRbcTAwuLMkAyCjT8+KxZCu0IeP3zHFZRp5ZddhGpA0E1EEssyayTJDpZQFSgTTJgXHzJjyv0pI0IbQzH1trO8JkX60ZhuKKEiUO5AQdhbbtT9a4SqQDn6jtHF2qAYmTephLaHXC2y9CEtGpRFPC8ZEdoZup5UUDSqutSkCDGE6kC2OEM39oZR15+phtDeUBPUpIosg5GnHMsfLQhVgdKQdMx1aulSKO1VsRDaFhLYsUQXQIo7Mo84SqgIZPJAOFGNcIKCBAr6vDAltDFk8SMg80fS0ZeqCJWD3CGGGHf462xjCVWDMNaK4iPDybxTJVQAsp8nZpxztmUycgUJoUoQLKrOhfQGpUlmHkIFoP8ZIUKECBEiRIjQgH4ACBN88gHHozQAAAAASUVORK5CYII="/>
-  <text id="connectText" class="text" style="font-size: 8pt" x="50%" y="95%">TAP OR SCAN TO CONNECT</text>
+  <text id="connectText" class="text" style="font-size: 8pt" x="50%" y="95%">SCAN TO CONNECT</text>
 </svg>
