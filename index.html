@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="ConnectiFy">
+  <meta name="author" content="Bruno Kraychete da Costa">
+  <title>ConnectiFy</title>
+  <link rel="stylesheet" type="text/css" media="all" href="./css/style.css">
+  <!-- <link rel="stylesheet" type="text/css" media="print" href="./css/print.css"> -->
+  <link rel="stylesheet" type="text/css" media="all" href="./css/bootstrap-5.3.2.min.css">
+  <link rel="stylesheet" href="./css/bootstrap-icons-1.11.1.min.css">
+  <!-- <link rel="manifest" href="manifest.json"> -->
+  <!-- <style>
+    body {
+      padding-top: 60px;
+      /* 60px to make the container go all the way to the bottom of the topbar */
+    }
+  </style> -->
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark-subtle">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">ConnectiFy</a>
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <!-- <li id="history-drop" class="dropdown">
+                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">History <b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="history-drop">
+                </ul>
+              </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section id="generator">
+      <h1 id="title" class="mb-4">ConnectiFy</h1>
+      <!-- <div id="history"></div> -->
+      <form id="form">
+        <div class="row">
+          <div class="col my-auto">
+            <div class="form-group has-feedback">
+              <label for="ssid" class="form-label">SSID</label>
+              <div class="input-group mb-3">
+                <span id="basic-addon-ssid" class="input-group-text"><i class="bi bi-reception-4"></i></span>
+                <input type="text" id="ssid" name="ssid" class="form-control" placeholder="SSID"
+                  aria-describedby="basic-addon-ssid" required>
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="enc" class="form-label">Encryption</label>
+              <div class="input-group">
+                <select name="enc" id="enc" class="form-select">
+                  <option value="WPA">WPA/WPA2/WPA3</option>
+                  <option value="WEP">WEP</option>
+                  <option value="nopass">None</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group has-feedback mb-3" id="key-p">
+              <label class="form-label">Key</label>
+              <div class="input-group">
+                <span id="basic-addon-key" class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <input type="password" id="key" name="key" class="form-control" placeholder="Key"
+                  aria-describedby="basic-addon-key" required>
+              </div>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" name="hidden" id="hidden" data-toggle="tooltip" title="Is your network hidden?">
+              <label class="pull-left form-label" for="hidden">Hidden</label>
+            </div>
+          </div>
+
+          <div class="col-auto">
+            <div class="form-group has-feedback mb-3" id="template-p">
+              <label class="form-label">LinkCard Template</label>
+              <div class="input-group">
+                <div id="templateCarousel" class="carousel slide bg-light p-2">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <object type="image/svg+xml" data="./images/card.svg"></object>
+                    </div>
+                    <div class="carousel-item">
+                      <object type="image/svg+xml" data="./images/card2-black.svg"></object>
+                    </div>
+                    <div class="carousel-item">
+                      <object type="image/svg+xml" data="./images/card2-white.svg"></object>
+                    </div>
+                    <div class="carousel-item">
+                      <object type="image/svg+xml" data="./images/card3.svg"></object>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#templateCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#templateCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button id="generate" type="submit" class="btn btn-primary">Generate LinkCard</button>
+          <button id="save" type="button" class="btn" data-toggle="tooltip"
+            title="Save the credentials for the WiFi in HTML5 localStorage for later use.">Save!</button>
+          <a href="#" id="export" class="btn" target="_blank" data-toggle="tooltip"
+            title="Export the QR code as a PNG.">Export!</a>
+          <a href="javascript:window.print()" id="print" class="btn" data-toggle="tooltip"
+            title="Print the QR code.">Print!</a>
+        </div>
+      </form>
+
+      <!-- <h1 id="showssid">SSID: none</h1>
+      <h1 id="showkey">Passphrase: none</h1> -->
+      <div id="linkcard"></div>
+    </section>
+    <section id="about">
+      <h1 class="anchor mt-4">About</h1>
+      <p>
+        Your guests just started arriving at your place for the party and soon enough they start asking
+        you about your Wi-Fi password so they can use your internet connection. You've already gone
+        through this before, so you changed your Wi-Fi password to a very simple (meaning, "very easyly
+        hackable and easy to guess") password so they connect on the first try. It's also easy for them
+        to just recite the password to everyone else at the party so you won't have to keep repeating
+        yourself over and over.
+      </p>
+      <p>
+        Well, there's a better way. With <b>ConnectiFy</b>, you can generate a <b>LinkCard</b>, a
+        custom card containing your Wi-Fi information encoded in it and just put it in a common area.
+        Then just point your guests towards it. They can scan the QR Code on it and easily join your
+        network. If you pair the card with a pre-programmed NFC card (not included), they can also
+        tap it to connect to your network.
+      </p>
+      <p>
+        Currently, LinkCards are small, credit-card-sized cards that can be customized with your own
+        design. A few templates are provided, but you can also use your own. ConnectiFy currently
+        supports templates in SVG (Scalable Vector Graphics) format only.
+      </p>
+      <p>
+        Don't trust your browser or this app or me? No problem. Just clone
+        <a href="https://github.com/brunokc/connectify">the project</a> and run the Python
+        script <code>generate-card.py</code> (after inspecting the code, of course) to generate
+        your cards.
+      </p>
+
+      <h2 class="mt-4">Supported Scanners</h2>
+      <p>Both Android and iOS support reading QR codes:</p>
+      <h3>Android</h3>
+      <p>
+        The Android Camera App has support for WiFi QR codes since Android 10.
+      </p>
+      <h3>iOS</h3>
+      <p>
+        The iOS Camera App has <a href="https://www.macrumors.com/2017/06/06/iphone-can-scan-qr-codes-ios-11/">
+          support for WiFi QR codes since iOS 11</a>.
+      </p>
+
+      <h2 class="mt-4 mb-4">LinkCard Examples</h2>
+      <div id="exampleContainer">
+        <object class="me-5 mb-3" data="./images/card.svg" type="image/svg+xml"></object>
+        <object class="me-5 mb-3" data="./images/card2-black.svg" type="image/svg+xml"></object>
+        <object class="me-5 mb-3" data="./images/card2-white.svg" type="image/svg+xml"></object>
+        <object class="me-5 mb-3" data="./images/card3.svg" type="image/svg+xml"></object>
+        <object class="me-5 mb-3" data="./images/card4.svg" type="image/svg+xml"></object>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h1 class="anchor mt-3">Contact</h1>
+      <p>
+        ConnectiFy was written by <a href="https://github.com/brunokc/">Bruno K. da Costa</a>,
+        using <a href="http://jquery.com/">jQuery</a>,
+        <a href="http://jeromeetienne.github.io/jquery-qrcode/">jQuery QRCode</a>,
+        <a href="http://yckart.github.io/jquery.storage.js/">jQuery Storage</a> and
+        <a href="https://getbootstrap.com/">Bootstrap</a>.
+      </p>
+      <p>If you have any comments, suggestions, bugs or complaints: please submit an issue through
+        the <a href="https://github.com/brunokc/connectify/issues">project website</a>.
+      </p>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <img src="./qifi-small.png" alt="qifi logo"> by <a href="https://github.com/evgeni">@evgeni</a><br>
+      <span style="color: #999999;">
+        QR Code is a registered trademark of DENSO WAVE INCORPORATED in the United States and other countries.
+      </span>
+    </div>
+  </footer>
+
+  <script src="./js/jquery-3.5.1.slim.min.js"></script>
+  <script src="./js/bootstrap-5.3.2.min.js"></script>
+  <script src="./js/jquery.qrcode.min.js"></script>
+  <script src="./js/jquery.storage.js"></script>
+  <script src="./js/connectify.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#form').submit(function () {
+        generate_card();
+        return false;
+      });
+
+      $('#save').click(function () {
+        save();
+      });
+      // $('#display-key').click(function () {
+      //   var $key = $("#key");
+      //   if ($key.attr('type') === 'password') {
+      //     $key.attr('type', 'text');
+      //     $("#display-key-icon").attr("class", "glyphicon glyphicon-eye-close");
+      //   } else {
+      //     $key.attr('type', 'password');
+      //     $("#display-key-icon").attr("class", "glyphicon glyphicon-eye-open");
+      //   }
+      // });
+      $('#enc').change(function () {
+        if ($(this).val() != 'nopass') {
+          $('#key-p').show();
+          $('#key').attr('required');
+        }
+        else {
+          $('#key-p').hide();
+          $('#key').removeAttr('required');
+        }
+      });
+      $('#form').tooltip({
+        selector: "[data-toggle=tooltip]"
+      });
+      // loadhistory();
+    });
+
+    // Service Worker installation
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js', { scope: './' }).then(function (registration) {
+          console.log('[Service Worker] Successfully installed');
+        }).catch(function (error) {
+          console.log('[Service Worker] Installation failed:', error);
+        })
+      });
+    }
+  </script>
+</body>
+
+</html>
