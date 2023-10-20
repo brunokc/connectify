@@ -1,6 +1,6 @@
 # ConnectiFy
 
-The ConnectiFy is an app that generates Wi-Fi connection cards based on a template
+ConnectiFy is an app that generates Wi-Fi connection cards based on a template
 of your choice. It embeds a QR code in the generated card that makes it easy for
 mobile clients to join a Wi-Fi network.
 
