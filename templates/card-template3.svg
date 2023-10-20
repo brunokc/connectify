@@ -2,31 +2,17 @@
 <svg width="204px" height="322px" viewBox="0 0 204 322" xmlns="http://www.w3.org/2000/svg">
   <style>
     #frame {
-      /* stroke: #555555;
-      fill: #555555; */
-      stroke: none;
+      stroke: black;
       fill: white;
       stroke-linejoin: round;
     }
 
-    .frame-gradient-start {
-      stop-opacity: 1;
-      stop-color: #707070;
-    }
-
-    .frame-gradient-end {
-      stop-opacity: 1;
-      stop-color: #303030;
-    }
-
     #wifi-logo {
-      /* stroke: #e0e0e0; */
       fill: black;
     }
 
     .text {
       fill: black;
-      /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-size: 10pt;
       text-anchor: middle;
@@ -35,7 +21,6 @@
 
     .ssid {
       fill: black;
-      /* font: bold 10pt Calibri; */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-weight: bold;
       font-size: 10pt;
@@ -45,7 +30,6 @@
 
     .password {
       fill: black;
-      /* font: bold 11pt Consolas; */
       font-family: Consolas, 'Courier New', Courier, monospace;
       font-size: 11pt;
       font-weight: bold;
