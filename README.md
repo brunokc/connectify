@@ -9,7 +9,8 @@ Optionally, you can also store this information on a credit-card sized NFC card,
 which allows devices to connect by scanning the QR code or tapping the NFC card
 (note: NFC functionality is not provided by this project).
 
-**Generate your LinkCards online:** [ConnectiFy App](https://brunokc.github.io/connectify)
+**Generate your LinkCards online:**
+<a href="https://brunokc.github.io/connectify" target="_blank">ConnectiFy App</a>
 
 ## Examples
 
@@ -25,8 +26,8 @@ You have two options to generate LinkCards: online or locally.
 
 ### Online Generation
 
-Simply use the [ConnectiFy App](https://brunokc.github.io/connectify) to create
-your LinkCards.
+Simply use the <a href="https://brunokc.github.io/connectify" target="_blank">ConnectiFy App</a>
+to create your LinkCards.
 
 ### Local Generation
 
@@ -61,4 +62,4 @@ with your friends or guests when they request your Wi-Fi password.
 
 ## Acknowledgements
 
-1. https://qifi.org by Evgeni Golov
+1. <a href="https://qifi.org" target="_blank">https://qifi.org</a> by Evgeni Golov
