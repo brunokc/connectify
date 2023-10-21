@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
   <meta name="description" content="ConnectiFy">
   <meta name="author" content="Bruno Kraychete da Costa">
   <title>ConnectiFy</title>
@@ -13,12 +12,6 @@
   <link rel="stylesheet" type="text/css" media="all" href="./css/style.css">
   <!-- <link rel="stylesheet" type="text/css" media="print" href="./css/print.css"> -->
   <!-- <link rel="manifest" href="manifest.json"> -->
-  <!-- <style>
-    body {
-      padding-top: 60px;
-      /* 60px to make the container go all the way to the bottom of the topbar */
-    }
-  </style> -->
 </head>
 
 <body>
@@ -127,19 +120,6 @@
         </div>
       </form>
 
-      <!-- <h1 id="showssid">SSID: none</h1>
-      <h1 id="showkey">Passphrase: none</h1> -->
-      <!-- <div class="m-3" id="linkcard-container">
-        <div id="qrcode"></div>
-        <div class="linkcard" id="linkcard"></div>
-        <div class="linkcard-buttons m-auto">
-          <a href="#" id="download" class="btn btn-primary" target="_blank" mime-type="image/svg+xml"
-            data-toggle="tooltip" title="Download your LinkCard as an SVG">Download</a>
-          <a href="javascript:window.print()" id="print" class="btn" data-toggle="tooltip"
-            title="Print the QR code.">Print</a>
-        </div>
-      </div> -->
-
       <div id="linkcardModal" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -154,7 +134,6 @@
             <div class="modal-footer">
               <a href="#" id="download" class="btn btn-primary" target="_blank" mime-type="image/svg+xml"
                 data-toggle="tooltip" title="Download your LinkCard as an SVG image">Download</a>
-                <!-- <button type="button" class="btn btn-primary">Download</button> -->
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
@@ -251,19 +230,6 @@
         return false;
       });
 
-      // $('#save').click(function () {
-      //   save();
-      // });
-      // $('#display-key').click(function () {
-      //   var $key = $("#key");
-      //   if ($key.attr('type') === 'password') {
-      //     $key.attr('type', 'text');
-      //     $("#display-key-icon").attr("class", "glyphicon glyphicon-eye-close");
-      //   } else {
-      //     $key.attr('type', 'password');
-      //     $("#display-key-icon").attr("class", "glyphicon glyphicon-eye-open");
-      //   }
-      // });
       $('#enc').change(() => {
         if ($(this).val() != 'nopass') {
           $('#key-p').show();
@@ -279,17 +245,6 @@
         selector: "[data-toggle=tooltip]"
       });
     });
-
-    // Service Worker installation
-    // if ('serviceWorker' in navigator) {
-    //   window.addEventListener('load', function () {
-    //     navigator.serviceWorker.register('/sw.js', { scope: './' }).then(function (registration) {
-    //       console.log('[Service Worker] Successfully installed');
-    //     }).catch(function (error) {
-    //       console.log('[Service Worker] Installation failed:', error);
-    //     })
-    //   });
-    // }
   </script>
 </body>
 
