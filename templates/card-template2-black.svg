@@ -21,9 +21,6 @@
       fill: white;
     }
 
-    #qrcode {
-    }
-
     .text {
       fill: white;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
