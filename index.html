@@ -10,12 +10,13 @@
   <link rel="stylesheet" type="text/css" media="all" href="./css/bootstrap-5.3.2.min.css">
   <link rel="stylesheet" href="./css/bootstrap-icons-1.11.1.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/forkongithub.css">
   <link rel="stylesheet" type="text/css" media="print" href="./css/print.css">
   <!-- <link rel="manifest" href="manifest.json"> -->
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-dark-subtle">
+  <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">ConnectiFy</a>
       <div id="navbar" class="collapse navbar-collapse">
@@ -33,7 +34,7 @@
 
   <div class="container">
     <section id="generator">
-      <h1 id="title" class="mb-4">ConnectiFy</h1>
+      <h1 id="title" class="my-4">ConnectiFy</h1>
       <form id="form">
         <div class="row">
           <div class="col my-auto">
@@ -78,7 +79,7 @@
             <div class="form-group has-feedback mb-3" id="template-p">
               <label class="form-label">LinkCard Template</label>
               <div class="input-group">
-                <div id="templateCarousel" class="carousel slide bg-light p-2">
+                <div id="templateCarousel" class="carousel slide p-2">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
                       <object type="image/svg+xml" data-template="card-template.svg" data="./images/card.svg"></object>
@@ -135,11 +136,9 @@
     </section>
 
     <div class="fork-github-ribbon">
-      <a href="https://github.com/brunokc/connectify">
-        <img decoding="async" width="149" height="149"
-          src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149"
-          class="attachment-full size-full" alt="Fork me on GitHub" loading="lazy" data-recalc-dims="1">
-      </a>
+      <span id="forkongithub">
+        <a href="https://github.com/brunokc/connectify/">Fork me on GitHub</a>
+      </span>
     </div>
 
     <section id="about">
@@ -201,7 +200,9 @@
 
   <footer class="footer">
     <div class="container">
-      <img src="./qifi-small.png" alt="qifi logo"> by <a href="https://github.com/brunokc">@brunokc</a><br>
+      <img src="./connectify-logo.jpeg" alt="connectify logo" width="50" height="50"> by
+        <a href="https://github.com/brunokc">@brunokc</a>
+      <br>
       <span class="qrcode-copyright">
         QR Code is a registered trademark of DENSO WAVE INCORPORATED in the United States and other countries.
       </span>
@@ -210,7 +211,7 @@
 
   <script src="./js/bootstrap-5.3.2.min.js"></script>
   <script src="./js/jquery-3.5.1.slim.min.js"></script>
-  <script src="./js/qrcode.js"></script>
+  <script src="./js/qrcode.js" defer></script>
   <script src="./js/connectify.js"></script>
 
   <script type="text/javascript">

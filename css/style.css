@@ -1,6 +1,4 @@
 #title,
-/* #showssid, */
-/* #showkey, */
 #linkcard,
 .linkcard-buttons,
 #exampleContainer {
@@ -24,36 +22,6 @@
 #print {
     display: none;
 }
-
-/*
-#showssid,
-#showkey {
-    display: none;
-}
-
-#save {
-    display: none;
-}
-
-#history-drop {
-    display: none;
-}
-
-#ssid,
-#key {
-    width: 100%;
-}
-
-#hidden {
-    margin: 0px 0px 5px 5px;
-}
-
-#qrcode canvas {
-    padding: 2em;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-}
-*/
 
 .footer {
     text-align: center;
@@ -85,17 +53,6 @@
     color: #999999;
 }
 
-/*
-.anchor {
-    padding-top: 60px;
-    margin-top: -60px;
-}
-
-img {
-    border: 0;
-}
-*/
-
 .form-label {
     font-weight: bold;
 }
@@ -111,7 +68,8 @@ img {
 }
 
 /* Dark arrows for the carousel */
-#templateCarousel .carousel-control-prev, .carousel-control-next {
+#templateCarousel .carousel-control-prev,
+.carousel-control-next {
     filter: invert(100%);
 }
 
@@ -141,10 +99,3 @@ img {
     }
 }
 */
-
-.fork-github-ribbon {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 9999; /* Ensure it appears above other elements */
-  }
