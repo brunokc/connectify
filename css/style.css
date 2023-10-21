@@ -2,6 +2,7 @@
 /* #showssid, */
 /* #showkey, */
 #linkcard,
+.linkcard-buttons,
 #exampleContainer {
     text-align: center;
 }
@@ -14,12 +15,17 @@
     margin-right: auto;
 }
 
-/*
-#export,
+.linkcard {
+    margin: 1em;
+}
+
+#qrcode,
+#download,
 #print {
     display: none;
 }
 
+/*
 #showssid,
 #showkey {
     display: none;
@@ -41,12 +47,13 @@
 #hidden {
     margin: 0px 0px 5px 5px;
 }
+*/
 
 #qrcode canvas {
     padding: 2em;
     image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
 }
-*/
 
 .footer {
     text-align: center;
@@ -102,6 +109,10 @@ img {
 /* Dark arrows for the carousel */
 #templateCarousel .carousel-control-prev, .carousel-control-next {
     filter: invert(100%);
+}
+
+.modal-backdrop {
+    opacity: 0.75 !important;
 }
 
 /*

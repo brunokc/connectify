@@ -8,10 +8,10 @@
   <meta name="description" content="ConnectiFy">
   <meta name="author" content="Bruno Kraychete da Costa">
   <title>ConnectiFy</title>
-  <link rel="stylesheet" type="text/css" media="all" href="./css/style.css">
-  <!-- <link rel="stylesheet" type="text/css" media="print" href="./css/print.css"> -->
   <link rel="stylesheet" type="text/css" media="all" href="./css/bootstrap-5.3.2.min.css">
   <link rel="stylesheet" href="./css/bootstrap-icons-1.11.1.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/style.css">
+  <!-- <link rel="stylesheet" type="text/css" media="print" href="./css/print.css"> -->
   <!-- <link rel="manifest" href="manifest.json"> -->
   <!-- <style>
     body {
@@ -85,6 +85,9 @@
               <input class="form-check-input" type="checkbox" name="hidden" id="hidden" data-toggle="tooltip" title="Is your network hidden?">
               <label class="pull-left form-label" for="hidden">Hidden</label>
             </div>
+            <div class="form-group text-center">
+              <button id="generate" type="submit" class="btn btn-primary">Generate LinkCard</button>
+            </div>
           </div>
 
           <div class="col-auto">
@@ -94,16 +97,19 @@
                 <div id="templateCarousel" class="carousel slide bg-light p-2">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <object type="image/svg+xml" data="./images/card.svg"></object>
+                      <object type="image/svg+xml" data-template="card-template.svg" data="./images/card.svg"></object>
                     </div>
                     <div class="carousel-item">
-                      <object type="image/svg+xml" data="./images/card2-black.svg"></object>
+                      <object type="image/svg+xml" data-template="card-template2-black.svg" data="./images/card2-black.svg"></object>
                     </div>
                     <div class="carousel-item">
-                      <object type="image/svg+xml" data="./images/card2-white.svg"></object>
+                      <object type="image/svg+xml" data-template="card-template2-white.svg" data="./images/card2-white.svg"></object>
                     </div>
                     <div class="carousel-item">
-                      <object type="image/svg+xml" data="./images/card3.svg"></object>
+                      <object type="image/svg+xml" data-template="card-template3.svg" data="./images/card3.svg"></object>
+                    </div>
+                    <div class="carousel-item">
+                      <object type="image/svg+xml" data-template="card-template4.svg" data="./images/card4.svg"></object>
                     </div>
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#templateCarousel" data-bs-slide="prev">
@@ -119,20 +125,41 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <button id="generate" type="submit" class="btn btn-primary">Generate LinkCard</button>
-          <button id="save" type="button" class="btn" data-toggle="tooltip"
-            title="Save the credentials for the WiFi in HTML5 localStorage for later use.">Save!</button>
-          <a href="#" id="export" class="btn" target="_blank" data-toggle="tooltip"
-            title="Export the QR code as a PNG.">Export!</a>
-          <a href="javascript:window.print()" id="print" class="btn" data-toggle="tooltip"
-            title="Print the QR code.">Print!</a>
-        </div>
       </form>
 
       <!-- <h1 id="showssid">SSID: none</h1>
       <h1 id="showkey">Passphrase: none</h1> -->
-      <div id="linkcard"></div>
+      <!-- <div class="m-3" id="linkcard-container">
+        <div id="qrcode"></div>
+        <div class="linkcard" id="linkcard"></div>
+        <div class="linkcard-buttons m-auto">
+          <a href="#" id="download" class="btn btn-primary" target="_blank" mime-type="image/svg+xml"
+            data-toggle="tooltip" title="Download your LinkCard as an SVG">Download</a>
+          <a href="javascript:window.print()" id="print" class="btn" data-toggle="tooltip"
+            title="Print the QR code.">Print</a>
+        </div>
+      </div> -->
+
+      <div id="linkcardModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Your LinkCard</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="linkcard m-4" id="linkcard"></div>
+              <p class="mt-3 text-center">Test you LinkCard by pointing your mobile camera here.</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" id="download" class="btn btn-primary" target="_blank" mime-type="image/svg+xml"
+                data-toggle="tooltip" title="Download your LinkCard as an SVG image">Download</a>
+                <!-- <button type="button" class="btn btn-primary">Download</button> -->
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <section id="about">
       <h1 class="anchor mt-4">About</h1>
@@ -179,9 +206,7 @@
       <div id="exampleContainer">
         <object class="me-5 mb-3" data="./images/card.svg" type="image/svg+xml"></object>
         <object class="me-5 mb-3" data="./images/card2-black.svg" type="image/svg+xml"></object>
-        <object class="me-5 mb-3" data="./images/card2-white.svg" type="image/svg+xml"></object>
         <object class="me-5 mb-3" data="./images/card3.svg" type="image/svg+xml"></object>
-        <object class="me-5 mb-3" data="./images/card4.svg" type="image/svg+xml"></object>
       </div>
     </section>
 
@@ -211,19 +236,22 @@
 
   <script src="./js/jquery-3.5.1.slim.min.js"></script>
   <script src="./js/bootstrap-5.3.2.min.js"></script>
-  <script src="./js/jquery.qrcode.min.js"></script>
+  <script src="./js/qrcode.js"></script>
   <script src="./js/jquery.storage.js"></script>
   <script src="./js/connectify.js"></script>
+
   <script type="text/javascript">
-    $(document).ready(function () {
-      $('#form').submit(function () {
-        generate_card();
+    $(document).ready(() => {
+      $('#form').submit(() => {
+        generateCardAsync();
+        const linkCardModal = new bootstrap.Modal('#linkcardModal', {});
+        linkCardModal.show();
         return false;
       });
 
-      $('#save').click(function () {
-        save();
-      });
+      // $('#save').click(function () {
+      //   save();
+      // });
       // $('#display-key').click(function () {
       //   var $key = $("#key");
       //   if ($key.attr('type') === 'password') {
@@ -234,7 +262,7 @@
       //     $("#display-key-icon").attr("class", "glyphicon glyphicon-eye-open");
       //   }
       // });
-      $('#enc').change(function () {
+      $('#enc').change(() => {
         if ($(this).val() != 'nopass') {
           $('#key-p').show();
           $('#key').attr('required');
@@ -244,22 +272,22 @@
           $('#key').removeAttr('required');
         }
       });
+
       $('#form').tooltip({
         selector: "[data-toggle=tooltip]"
       });
-      // loadhistory();
     });
 
     // Service Worker installation
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js', { scope: './' }).then(function (registration) {
-          console.log('[Service Worker] Successfully installed');
-        }).catch(function (error) {
-          console.log('[Service Worker] Installation failed:', error);
-        })
-      });
-    }
+    // if ('serviceWorker' in navigator) {
+    //   window.addEventListener('load', function () {
+    //     navigator.serviceWorker.register('/sw.js', { scope: './' }).then(function (registration) {
+    //       console.log('[Service Worker] Successfully installed');
+    //     }).catch(function (error) {
+    //       console.log('[Service Worker] Installation failed:', error);
+    //     })
+    //   });
+    // }
   </script>
 </body>
 

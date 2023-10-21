@@ -1,4 +1,4 @@
-function escape_string(string) {
+function escapeString(string) {
     var to_escape = ['\\', ';', ',', ':', '"'];
     var hex_only = /^[0-9a-f]+$/i;
     var output = "";
@@ -10,54 +10,98 @@ function escape_string(string) {
             output += string[i];
         }
     }
-    //if (hex_only.test(output)) {
-    //    output = '"'+output+'"';
-    //}
     return output;
 }
 
-function generate_qrcode(ssid, encryption, password, hidden) {
+function generateQRCode(ssid, encryption, password, hidden) {
     // https://github.com/zxing/zxing/wiki/Barcode-Contents#wi-fi-network-config-android-ios-11
-    var qrstring = 'WIFI:S:' + escape_string(ssid) + ';T:' + encryption +
-        ';P:' + escape_string(password) + ';';
+    var qrstring = 'WIFI:S:' + escapeString(ssid) + ';T:' + encryption +
+        ';P:' + escapeString(password) + ';';
     if (hidden) {
         qrstring += 'H:true';
     }
     qrstring += ';';
-    $('#linkcard').empty();
-    $('#linkcard').qrcode(qrstring);
 
-    var canvas = $('#linkcard canvas');
-    if (canvas.length == 1) {
-        var data = canvas[0].toDataURL('image/png');
-        return data;
-    }
-    return null;
+    var typeNumber = 0; // autodetect
+    var errorCorrectionLevel = 'L';
+    var qr = qrcode(typeNumber, errorCorrectionLevel);
+    qr.addData(qrstring);
+    qr.make();
+    return qr.createSvgTag();
 }
 
-function generate_card() {
+function encodeSVG(svg) {
+    return "data:image/svg+xml," + encodeURIComponent(svg);
+}
+
+// Find any external SVG and inline them into the primary one.
+// Currently we only look for external SVGs onlin in <image> tags.
+async function inlineSVGAsync(svg) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(svg, "text/xml");
+    const images = doc.getElementsByTagName("image");
+    for (var i = 0; i < images.length; i++) {
+        let innersvg = images[i].href.baseVal;
+        if (innersvg.endsWith(".svg")) {
+            const innerElement = await fetch(innersvg);
+            const innerContent = await innerElement.text();
+            images[i].setAttribute("href", encodeSVG(innerContent));
+        }
+    }
+
+    const inlinedSvg = doc.documentElement.outerHTML;
+    return inlinedSvg;
+}
+
+async function generateCardAsync() {
     var ssid = $('#ssid').val();
     var enc = $('#enc').val();
     var key = (enc != 'nopass' ? $('#key').val() : '');
     var templateObj = $('#templateCarousel').find('div.active').find('object')[0];
-    var template = templateObj.data.substring(templateObj.data.lastIndexOf('/') + 1);
+    var template = templateObj.dataset.template;
     var hidden = $('#hidden').is(':checked');
 
-    var qrcode_data = generate_qrcode(ssid, enc, key, hidden);
+    var qrcodeData = generateQRCode(ssid, enc, key, hidden);
+
+    var cardData = {
+        ssid: ssid,
+        encryption: enc,
+        password: key,
+        template: template,
+        templateUrl: "./templates/" + template,
+        qrcodeData: qrcodeData,
+    };
+
+    var contents = await generateCardFromTemplateAsync(cardData);
+    encodedSVG = encodeSVG(await inlineSVGAsync(contents));
+    var objtag = document.createElement("object");
+    objtag.type = "image/svg+xml";
+    objtag.data = encodedSVG;
+    $('#linkcard').html(objtag);
 
     // $('#showssid').text('SSID: ' + ssid);
     // $('#save').show();
     // $('#print').css('display', 'inline-block');
 
-    // var e = $('#export');
-    // e.attr('href', qrcode_data);
-    // e.attr('download', ssid + '-qrcode.png');
-    // // e.show() sets display:inline, but we need inline-block
-    // e.css('display', 'inline-block');
-
-
+    var e = $('#download');
+    e.attr('href', encodedSVG);
+    e.attr('download', 'connectify-' + ssid + '.svg');
+    e.css('display', 'inline-block');
 }
 
+async function generateCardFromTemplateAsync(cardData) {
+    var req = await fetch(cardData.templateUrl);
+    var contents = await req.text();
+    contents = contents
+        .replace("qrcode-placeholder.png", encodeSVG(cardData.qrcodeData))
+        // .replace("{svg_qrcode_placeholder}", cardData.qrcodeData)
+        .replace("{network_name}", cardData.ssid)
+        .replace("{network_password}", cardData.password)
+
+    return contents;
+}
+
+/*()
 function generate() {
     var ssid = $('#ssid').val();
     var hidden = $('#hidden').is(':checked');
@@ -144,10 +188,11 @@ function clearhistory() {
     $.localStorage('qificodes', null);
     $('#history-drop').hide();
 };
+*/
 
 $(document).ready(function () {
     $('#form').submit(function () {
-        generate_card();
+        generateCardAsync();
         return false;
     });
 
@@ -178,15 +223,19 @@ $(document).ready(function () {
         selector: "[data-toggle=tooltip]"
     });
     // loadhistory();
+
+    // Sample data for quick testing
+    // $("#ssid").val("My Home Network");
+    // $("#key").val("MyPassw0rd");
 });
 
 // Service Worker installation
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js', { scope: './' }).then(function (registration) {
-            console.log('[Service Worker] Successfully installed');
-        }).catch(function (error) {
-            console.log('[Service Worker] Installation failed:', error);
-        })
-    });
-}
+// if ('serviceWorker' in navigator) {
+//     window.addEventListener('load', function () {
+//         navigator.serviceWorker.register('/sw.js', { scope: './' }).then(function (registration) {
+//             console.log('[Service Worker] Successfully installed');
+//         }).catch(function (error) {
+//             console.log('[Service Worker] Installation failed:', error);
+//         })
+//     });
+// }
