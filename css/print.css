@@ -1,17 +1,11 @@
 .navbar,
-#generator .page-header,
-#about,
-#history,
+#generator #title,
+#instructions-text,
+.fork-github-ribbon,
+.modal-footer,
 #form,
-#github,
+#about,
 #contact,
 .footer {
     display: none;
-}
-
-#showssid,
-#showkey {
-    display: block;
-    word-wrap: break-word;
-    font-family: Consolas, Menlo, "DejaVu Sans Mono", monospace;
 }

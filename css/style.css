@@ -47,13 +47,13 @@
 #hidden {
     margin: 0px 0px 5px 5px;
 }
-*/
 
 #qrcode canvas {
     padding: 2em;
-    image-rendering: crisp-edges;
     image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
+*/
 
 .footer {
     text-align: center;
@@ -79,6 +79,10 @@
 
 .footer-links li:first-child {
     padding-left: 0;
+}
+
+.footer .qrcode-copyright {
+    color: #999999;
 }
 
 /*

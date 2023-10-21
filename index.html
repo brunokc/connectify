@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" media="all" href="./css/bootstrap-5.3.2.min.css">
   <link rel="stylesheet" href="./css/bootstrap-icons-1.11.1.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/style.css">
-  <!-- <link rel="stylesheet" type="text/css" media="print" href="./css/print.css"> -->
+  <link rel="stylesheet" type="text/css" media="print" href="./css/print.css">
   <!-- <link rel="manifest" href="manifest.json"> -->
 </head>
 
@@ -129,11 +129,13 @@
             </div>
             <div class="modal-body">
               <div class="linkcard m-4" id="linkcard"></div>
-              <p class="mt-3 text-center">Test you LinkCard by pointing your mobile camera here.</p>
+              <p id="instructions-text" class="mt-3 text-center">Test you LinkCard by pointing your mobile camera here.</p>
             </div>
             <div class="modal-footer">
               <a href="#" id="download" class="btn btn-primary" target="_blank" mime-type="image/svg+xml"
                 data-toggle="tooltip" title="Download your LinkCard as an SVG image">Download</a>
+              <a href="javascript:window.print()" class="btn btn-primary" data-toggle="tooltip"
+                title="Print the QR code">Print</a>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
@@ -209,14 +211,14 @@
   <footer class="footer">
     <div class="container">
       <img src="./qifi-small.png" alt="qifi logo"> by <a href="https://github.com/brunokc">@brunokc</a><br>
-      <span style="color: #999999;">
+      <span class="qrcode-copyright">
         QR Code is a registered trademark of DENSO WAVE INCORPORATED in the United States and other countries.
       </span>
     </div>
   </footer>
 
-  <script src="./js/jquery-3.5.1.slim.min.js"></script>
   <script src="./js/bootstrap-5.3.2.min.js"></script>
+  <script src="./js/jquery-3.5.1.slim.min.js"></script>
   <script src="./js/qrcode.js"></script>
   <script src="./js/jquery.storage.js"></script>
   <script src="./js/connectify.js"></script>
