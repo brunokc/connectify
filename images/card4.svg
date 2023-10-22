@@ -58,11 +58,11 @@
   <image x="40.8%" y="5.6%" width="15%" href="wifi-logo.svg"/>
 
   <text id="networkLabel" class="text" x="50%" y="28%">NETWORK</text>
-  <rect x="10%" y="31%" width="80%" height="6%" rx="4px" class="text-background"/>
+  <rect x="5%" y="31%" width="90%" height="6%" rx="4px" class="text-background"/>
   <text id="networkName" class="ssid" x="50%" y="34%">My WiFi Network</text>
 
   <text id="passwordLabel" class="text" x="50%" y="43%">PASSWORD</text>
-  <rect x="10%" y="46%" width="80%" height="6%" rx="4px" class="text-background"/>
+  <rect x="5%" y="46%" width="90%" height="6%" rx="4px" class="text-background"/>
   <text id="passwordText" class="password" x="50%" y="49%">my_wifi_p@ssw0rd</text>
 
   <image id="qrcode" width="60%" x="15%" y="85%" transform="scale(0.7)" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAACD0lEQVR4nO2aS47EMAhEkXKAHClXz5FyAEuMDYXxpHsWszXFIh3bvKxK/Nyi/7dbCBEiRIgQIUKEAhLY0XfOsfH0xfUc/WAuzS5CRSBb6DOgTvZlc8i+4W/pR6gCNHWT/mb32UJQ/jVC1SAxr6mqEVPsjVBZyM4st5xfDghVgUI38LKzLijLPBDU9CNUAJrlKPLN+/G1HCW0L5SWZ+n6ciFUAAqH6EjEH02yAvFTQkWg/jvMvDQSzNiLA3NqQqgO5IWGiAkqXSO3wAjVgcILClremqQRKgNhTCEzt1h7uk47Y49QCWiZWli+ubPuyMxz4vuECkBRbcTAwuLMkAyCjT8+KxZCu0IeP3zHFZRp5ZddhGpA0E1EEssyayTJDpZQFSgTTJgXHzJjyv0pI0IbQzH1trO8JkX60ZhuKKEiUO5AQdhbbtT9a4SqQDn6jtHF2qAYmTephLaHXC2y9CEtGpRFPC8ZEdoZup5UUDSqutSkCDGE6kC2OEM39oZR15+phtDeUBPUpIosg5GnHMsfLQhVgdKQdMx1aulSKO1VsRDaFhLYsUQXQIo7Mo84SqgIZPJAOFGNcIKCBAr6vDAltDFk8SMg80fS0ZeqCJWD3CGGGHf462xjCVWDMNaK4iPDybxTJVQAsp8nZpxztmUycgUJoUoQLKrOhfQGpUlmHkIFoP8ZIUKECBEiRIjQgH4ACBN88gHHozQAAAAASUVORK5CYII="/>
