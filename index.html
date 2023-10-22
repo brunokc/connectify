@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="./css/bootstrap-icons-1.11.1.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/style.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/forkongithub.css">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/password-meter.css">
   <link rel="stylesheet" type="text/css" media="print" href="./css/print.css">
   <link rel="shortcut icon" href="connectify-logo.svg" type="image/svg">
   <!-- <link rel="manifest" href="manifest.json"> -->
@@ -47,6 +48,11 @@
                 <span id="basic-addon-ssid" class="input-group-text"><i class="bi bi-reception-4"></i></span>
                 <input type="text" id="ssid" name="ssid" class="form-control" placeholder="SSID"
                   aria-describedby="basic-addon-ssid" required>
+                <div class="input-group-text">
+                  <input class="form-check-input m-auto me-1" type="checkbox" id="hidden"
+                    data-toggle="tooltip" title="Is your network hidden?">
+                  <label class="form-label m-auto" for="hidden">Hidden</label>
+                </div>
               </div>
             </div>
 
@@ -61,17 +67,33 @@
               </div>
             </div>
 
-            <div class="form-group has-feedback mb-3" id="key-p">
-              <label class="form-label">Key</label>
+            <div class="form-group has-feedback mb-3" id="password-p">
+              <label for="password" class="form-label">Password</label>
               <div class="input-group">
-                <span id="basic-addon-key" class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                <input type="password" id="key" name="key" class="form-control" placeholder="Key"
-                  aria-describedby="basic-addon-key" required>
+                <span id="basic-addon-password" class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                  autocomplete="off" aria-describedby="passwordHelp" required>
+              </div>
+              <div class="password-meter">
+                <div class="meter-section rounded me-2"></div>
+                <div class="meter-section rounded me-2"></div>
+                <div class="meter-section rounded me-2"></div>
+                <div class="meter-section rounded"></div>
+              </div>
+              <div id="passwordHelp" class="form-text text-muted">
+                Use 12 or more characters with a mix of letters, numbers & symbols.
+              </div>
+              <input class="form-check-input" type="checkbox" id="autogenpass"
+                data-toggle="tooltip" title="Autogenerate Wi-Fi password">
+              <label class="form-label" for="autogenpass">Autogenerate Password</label>
+              <div class="form-group">
+                <label for="passwordLength" class="form-label">Password Length:
+                  <span id="passwordLengthDisplay"></span>
+                </label>
+                <input id="passwordLength" type="range" class="form-range" min="12" max="22" step="1" value="16">
               </div>
             </div>
             <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" name="hidden" id="hidden" data-toggle="tooltip" title="Is your network hidden?">
-              <label class="pull-left form-label" for="hidden">Hidden</label>
             </div>
             <div class="form-group text-center">
               <button id="generate" type="submit" class="btn btn-primary">Generate LinkCard</button>
@@ -216,30 +238,63 @@
   <script src="./js/jquery-3.5.1.slim.min.js"></script>
   <script src="./js/qrcode.js" defer></script>
   <script src="./js/connectify.js"></script>
+  <script src="./js/password-generator.js" defer></script>
+  <script src="./js/password-meter.js" defer></script>
 
   <script type="text/javascript">
+    let oldpassvalue = "";
     $(document).ready(() => {
-      $('#form').submit(() => {
+      $('#form').on("submit", function() {
         generateCardAsync();
         const linkCardModal = new bootstrap.Modal('#linkcardModal', {});
         linkCardModal.show();
         return false;
       });
 
-      $('#enc').change(() => {
+      $('#enc').on("change", function() {
         if ($(this).val() != 'nopass') {
-          $('#key-p').show();
-          $('#key').attr('required');
+          $('#password-p').show();
+          $('#password').attr('required');
         }
         else {
-          $('#key-p').hide();
-          $('#key').removeAttr('required');
+          $('#password-p').hide();
+          $('#password').removeAttr('required');
         }
       });
 
-      $('#form').tooltip({
-        selector: "[data-toggle=tooltip]"
+      $("#autogenpass").on("change", function() {
+        const pwd = $("#password");
+        if ($(this).is(":checked")) {
+          const length = parseInt($("#passwordLength").val());
+          const password = generateBase64Password(length);
+          oldpassvalue = pwd.val();
+          pwd.val(password);
+          pwd.attr("type", "text");
+        } else {
+          pwd.val(oldpassvalue);
+          oldpassvalue = "";
+          pwd.attr("type", "password");
+        }
+        pwd.select();
+        pwd.trigger("input");
       });
+
+      $("#passwordLength").on("input", function() {
+        const newLength = $(this).val();
+        $("#passwordLengthDisplay").text(newLength);
+        if ($("#autogenpass").is(":checked")) {
+          $("#autogenpass").trigger("change");
+        }
+      });
+      $("#passwordLength").trigger("input");
+      // $('#form').tooltip({
+      //   selector: "[data-toggle=tooltip]"
+      // });
+
+      // Enabling tooltips
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      const tooltipList = [...tooltipTriggerList].map(
+        tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
     });
   </script>
 </body>

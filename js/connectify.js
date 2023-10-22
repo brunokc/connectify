@@ -56,17 +56,17 @@ async function inlineSVGAsync(svg) {
 async function generateCardAsync() {
     var ssid = $('#ssid').val();
     var enc = $('#enc').val();
-    var key = (enc != 'nopass' ? $('#key').val() : '');
+    var password = (enc != 'nopass' ? $('#password').val() : '');
     var templateObj = $('#templateCarousel').find('div.active').find('object')[0];
     var template = templateObj.dataset.template;
     var hidden = $('#hidden').is(':checked');
 
-    var qrcodeData = generateQRCode(ssid, enc, key, hidden);
+    var qrcodeData = generateQRCode(ssid, enc, password, hidden);
 
     var cardData = {
         ssid: ssid,
         encryption: enc,
-        password: key,
+        password: password,
         template: template,
         templateUrl: "./templates/" + template,
         qrcodeData: qrcodeData,
@@ -102,30 +102,7 @@ async function generateCardFromTemplateAsync(cardData) {
 }
 
 $(document).ready(function () {
-    $('#form').submit(function () {
-        generateCardAsync();
-        return false;
-    });
-
-    $('#save').click(function () {
-        save();
-    });
-
-    $('#enc').change(function () {
-        if ($(this).val() != 'nopass') {
-            $('#key-p').show();
-            $('#key').attr('required');
-        }
-        else {
-            $('#key-p').hide();
-            $('#key').removeAttr('required');
-        }
-    });
-    $('#form').tooltip({
-        selector: "[data-toggle=tooltip]"
-    });
-
     // Sample data for quick testing
-    // $("#ssid").val("My Home Network");
-    // $("#key").val("MyPassw0rd");
+    $("#ssid").val("My Home Network");
+    $("#password").val("MyPassw0rd");
 });
