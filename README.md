@@ -36,10 +36,11 @@ your LinkCards.
 $ git clone https://github.com/brunokc/connectify.git
 ```
 
-2. Navigate to the project directory and activate the Python virtual environment:
+2. Navigate to the project directory, create and activate the Python virtual environment:
 
 ```shell
 $ cd connectify
+$ python -m venv venv
 $ . venv/bin/activate
 ```
 
