@@ -37,7 +37,9 @@
     </svg>
     <svg id="wifi" x="144.5" y="16">
       <g transform="scale(0.3)">
-        <path d="M 11 16 L 8 13 Q 11 10 14 13 Z M 7 12 Q 11 8 15 12 L 18 9 Q 11 3 4 9 Z M 3 8 Q 11 1 19 8 L 22 5 Q 11 -4 0 5 Z"/>
+        <path d="M 11 16 L 8 13 Q 11 10 14 13 Z"/>
+        <path d="M 7 12 Q 11 8 15 12 L 18 9 Q 11 3 4 9 Z"/>
+        <path d="M 3 8 Q 11 1 19 8 L 22 5 Q 11 -4 0 5 Z"/>
       </g>
     </svg>
     <svg id="battery" x="152" y="17">
