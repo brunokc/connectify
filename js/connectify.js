@@ -103,6 +103,6 @@ async function generateCardFromTemplateAsync(cardData) {
 
 $(document).ready(function () {
     // Sample data for quick testing
-    $("#ssid").val("My Home Network");
-    $("#password").val("MyPassw0rd");
+    // $("#ssid").val("My Home Network");
+    // $("#password").val("MyPassw0rd");
 });
