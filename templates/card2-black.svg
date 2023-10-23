@@ -78,6 +78,6 @@
   <text id="passwordLabel" class="text" x="50%" y="40%">PASSWORD</text>
   <text id="passwordText" class="password" x="50%" y="45%">{network_password}</text>
 
-  <image id="qrcode" width="60%" x="20%" y="53%" href="qrcode-placeholder.png"/>
+  <image id="qrcode" width="60%" x="20%" y="53%" href="connectify-qrcode-placeholder.png"/>
   <text id="connectText" class="text" style="font-size: 8pt" x="50%" y="95%">SCAN TO CONNECT</text>
 </svg>

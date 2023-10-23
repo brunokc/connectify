@@ -55,7 +55,7 @@
   <rect id="frame" width="100%" height="100%" rx="10px" ry="10px"/>
 
   <text class="text" x="50%" y="18%" style="font-size: 32pt;">Wi-Fi</text>
-  <image x="40.8%" y="5.6%" width="15%" href="./templates/wifi-logo.svg"/>
+  <image x="40.8%" y="5.6%" width="15%" href="./wifi-logo.svg"/>
 
   <text id="networkLabel" class="text" x="50%" y="28%">NETWORK</text>
   <rect x="5%" y="31%" width="90%" height="6%" rx="4px" class="text-background"/>
@@ -65,7 +65,10 @@
   <rect x="5%" y="46%" width="90%" height="6%" rx="4px" class="text-background"/>
   <text id="passwordText" class="password" x="50%" y="49%">{network_password}</text>
 
-  <image id="qrcode" width="60%" x="15%" y="85%" transform="scale(0.7)" href="qrcode-placeholder.png"/>
-  <image x="325%" y="310%" transform="scale(0.2)" href="./templates/iphone-nfc.svg" />
-  <text id="connectText" class="text" style="font-size: 8pt" x="50%" y="92%">TAP OR SCAN TO CONNECT</text>
+  <image id="qrcode" width="60%" x="15%" y="85%" transform="scale(0.7)"
+    href="connectify-qrcode-placeholder.png"/>
+  <image x="325%" y="310%" transform="scale(0.2)" href="./iphone-nfc.svg"/>
+  <text id="connectText" class="text" style="font-size: 8pt" x="50%" y="92%">
+    TAP OR SCAN TO CONNECT
+  </text>
 </svg>
