@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" media="all" href="./css/style.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/forkongithub.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/password-meter.css">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/advanced-bootstrap-range.css">
   <link rel="stylesheet" type="text/css" media="print" href="./css/print.css">
   <link rel="shortcut icon" href="connectify-logo.svg" type="image/svg">
   <!-- <link rel="manifest" href="manifest.json"> -->
@@ -48,18 +49,17 @@
                 <span id="basic-addon-ssid" class="input-group-text"><i class="bi bi-reception-4"></i></span>
                 <input type="text" id="ssid" name="ssid" class="form-control" placeholder="SSID"
                   aria-describedby="basic-addon-ssid" required>
-                <div class="input-group-text">
-                  <input class="form-check-input m-auto me-1" type="checkbox" id="hidden"
-                    data-toggle="tooltip" title="Is your network hidden?">
+                <div class="input-group-text" data-toggle="tooltip" title="Is your network hidden?">
+                  <input class="form-check-input m-auto me-1" type="checkbox" id="hidden">
                   <label class="form-label m-auto" for="hidden">Hidden</label>
                 </div>
               </div>
             </div>
 
             <div class="form-group mb-3">
-              <label for="enc" class="form-label">Encryption</label>
+              <label for="encryption" class="form-label">Encryption</label>
               <div class="input-group">
-                <select name="enc" id="enc" class="form-select">
+                <select name="encryption" id="encryption" class="form-select">
                   <option value="WPA">WPA/WPA2/WPA3</option>
                   <option value="WEP">WEP</option>
                   <option value="nopass">None</option>
@@ -73,31 +73,35 @@
                 <span id="basic-addon-password" class="input-group-text"><i class="bi bi-lock-fill"></i></span>
                 <input type="password" id="password" name="password" class="form-control" placeholder="Password"
                   autocomplete="off" aria-describedby="passwordHelp" required>
+                <div class="input-group-text" data-toggle="tooltip" title="Autogenerate Wi-Fi password">
+                  <input class="form-check-input m-auto me-1" type="checkbox" id="autogenpass" checked>
+                  <label class="form-label m-auto" for="autogenpass">Autogenerate</label>
+                </div>
               </div>
-              <div class="password-meter">
-                <div class="meter-section rounded me-2"></div>
-                <div class="meter-section rounded me-2"></div>
-                <div class="meter-section rounded me-2"></div>
-                <div class="meter-section rounded"></div>
-              </div>
-              <div id="passwordHelp" class="form-text text-muted">
-                Use 12 or more characters with a mix of letters, numbers & symbols.
-              </div>
-              <input class="form-check-input" type="checkbox" id="autogenpass"
-                data-toggle="tooltip" title="Autogenerate Wi-Fi password">
-              <label class="form-label" for="autogenpass">Autogenerate Password</label>
               <div class="form-group">
-                <label for="passwordLength" class="form-label">Password Length:
-                  <span id="passwordLengthDisplay"></span>
-                </label>
-                <input id="passwordLength" type="range" class="form-range" min="12" max="22" step="1" value="16">
+                <!-- <label for="passwordLength" class="form-label">Password Length</label> -->
+                <input id="passwordLength" type="range" class="form-range range-with-labels"
+                  title="Password length" min="12" max="22" step="1" value="16">
+                <div class="range-labels text-body-tertiary"></div>
               </div>
+              <div>
+                <div class="password-meter">
+                  <div class="meter-section rounded me-2"></div>
+                  <div class="meter-section rounded me-2"></div>
+                  <div class="meter-section rounded me-2"></div>
+                  <div class="meter-section rounded"></div>
+                </div>
+                <div id="passwordHelp" class="form-text text-muted">
+                  Use 12 or more characters with a mix of letters, numbers & symbols.
+                </div>
+              </div>
+              <!-- <div class="input-group" data-toggle="tooltip" title="Autogenerate Wi-Fi password">
+                <input class="form-check-input me-1" type="checkbox" id="autogenpass" checked>
+                <label class="form-label" for="autogenpass">Autogenerate Password</label>
+              </div> -->
             </div>
-            <div class="form-check mb-3">
-            </div>
-            <div class="form-group text-center">
-              <button id="generate" type="submit" class="btn btn-primary">Generate LinkCard</button>
-            </div>
+            <!-- <div class="form-check mb-3">
+            </div> -->
           </div>
 
           <div class="col-auto">
@@ -107,19 +111,19 @@
                 <div id="templateCarousel" class="carousel slide p-2">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <object type="image/svg+xml" data-template="card.svg" data="./templates/card.svg"></object>
+                      <object type="image/svg+xml" data="./templates/card.svg"></object>
                     </div>
                     <div class="carousel-item">
-                      <object type="image/svg+xml" data-template="card2-black.svg" data="./templates/card2-black.svg"></object>
+                      <object type="image/svg+xml" data="./templates/card2-black.svg"></object>
                     </div>
                     <div class="carousel-item">
-                      <object type="image/svg+xml" data-template="card2-white.svg" data="./templates/card2-white.svg"></object>
+                      <object type="image/svg+xml" data="./templates/card2-white.svg"></object>
                     </div>
                     <div class="carousel-item">
-                      <object type="image/svg+xml" data-template="card3.svg" data="./templates/card3.svg"></object>
+                      <object type="image/svg+xml" data="./templates/card3.svg"></object>
                     </div>
                     <div class="carousel-item">
-                      <object type="image/svg+xml" data-template="card4.svg" data="./templates/card4.svg"></object>
+                      <object type="image/svg+xml" data="./templates/card4.svg"></object>
                     </div>
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#templateCarousel" data-bs-slide="prev">
@@ -133,6 +137,10 @@
                 </div>
               </div>
             </div>
+          </div>
+
+          <div class="form-group text-center">
+            <button id="generate" type="submit" class="btn btn-primary">Generate LinkCard</button>
           </div>
         </div>
       </form>
@@ -240,6 +248,7 @@
   <script src="./js/connectify.js"></script>
   <script src="./js/password-generator.js" defer></script>
   <script src="./js/password-meter.js" defer></script>
+  <script src="./js/advanced-bootstrap-range.js" defer></script>
 
   <script type="text/javascript">
     let oldpassvalue = "";
@@ -251,7 +260,7 @@
         return false;
       });
 
-      $('#enc').on("change", function() {
+      $('#encryption').on("change", function() {
         if ($(this).val() != 'nopass') {
           $('#password-p').show();
           $('#password').attr('required');
@@ -262,39 +271,66 @@
         }
       });
 
+      function triggerInput(elementId) {
+        // Get a reference to your input element
+        const control = document.getElementById(elementId);
+
+        // Create a new input event
+        const inputEvent = new Event('input', {
+          bubbles: true, // Ensure the event bubbles up the DOM
+          cancelable: true, // Allow the event to be canceled
+        });
+
+        // Dispatch the input event on the input element
+        control.dispatchEvent(inputEvent);
+      }
+
       $("#autogenpass").on("change", function() {
         const pwd = $("#password");
         if ($(this).is(":checked")) {
           const length = parseInt($("#passwordLength").val());
           const password = generateBase64Password(length);
+
+          // Save any previous typed password
           oldpassvalue = pwd.val();
           pwd.val(password);
           pwd.attr("type", "text");
+
+          $("#passwordLength").prop("disabled", false);
         } else {
+          // Restore any previous typed password
+          pwd.attr("type", "password");
           pwd.val(oldpassvalue);
           oldpassvalue = "";
-          pwd.attr("type", "password");
+
+          $("#passwordLength").prop("disabled", true);
         }
-        pwd.select();
-        pwd.trigger("input");
+
+        // For some reason, $("#password").trigger("input") is not working, so
+        // synthesize an event to force the event listeners to run.
+        // pwd.trigger("input");
+        triggerInput("password");
       });
 
       $("#passwordLength").on("input", function() {
         const newLength = $(this).val();
         $("#passwordLengthDisplay").text(newLength);
-        if ($("#autogenpass").is(":checked")) {
-          $("#autogenpass").trigger("change");
-        }
+        // Trigger 'change' event on the autogenerate checkbox so a new password
+        // is generated and its strength is re-evaluated.
+        $("#autogenpass").trigger("change");
       });
+
       $("#passwordLength").trigger("input");
+
+      // $("#password").trigger("input");
       // $('#form').tooltip({
       //   selector: "[data-toggle=tooltip]"
       // });
 
       // Enabling tooltips
-      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-      const tooltipList = [...tooltipTriggerList].map(
-        tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+      // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      // const tooltipList = [...tooltipTriggerList].map(
+      //   tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
     });
   </script>
 </body>

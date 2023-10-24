@@ -78,6 +78,14 @@
 }
 
 /*
+    Make the text on labels inlined into text controls smaller.
+    This should affects just the inlined checkbox labels we use with textboxes
+*/
+.input-group-text label {
+    font-size: calc(var(--bs-body-font-size) * 0.8);
+}
+
+/*
 @media (min-width: 768px) and (max-width: 979px) {
     #about,
     #contact,

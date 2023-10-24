@@ -6,8 +6,8 @@ const meterSections = document.querySelectorAll('.meter-section');
 
 passwordInput.addEventListener('input', updateMeter);
 
-function updateMeter() {
-    const password = passwordInput.value;
+function updateMeter(event) {
+    const password = event.target.value;
     let strength = calculatePasswordStrength(password);
 
     // Remove all strength classes

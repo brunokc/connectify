@@ -34,18 +34,33 @@ function encodeSVG(svg) {
     return "data:image/svg+xml," + encodeURIComponent(svg);
 }
 
+// From https://stackoverflow.com/questions/44698967/requesting-blob-images-and-transforming-to-base64-with-fetch-api
+async function urlContentToBase64(url) {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    return new Promise(callback => {
+        let reader = new FileReader();
+        reader.onload = function() { callback(this.result) };
+        reader.readAsDataURL(blob);
+    });
+}
+
 // Find any external SVG and inline them into the primary one.
 // Currently we only look for external SVGs onlin in <image> tags.
-async function inlineSVGAsync(svg) {
+async function inlineSVGAsync(svg, relativePath) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(svg, "text/xml");
     const images = doc.getElementsByTagName("image");
     for (var i = 0; i < images.length; i++) {
-        let innersvg = images[i].href.baseVal;
-        if (innersvg.endsWith(".svg")) {
-            const innerElement = await fetch(innersvg);
+        let innerImg = images[i].href.baseVal;
+        const path = relativePath + "/" + innerImg;
+        if (innerImg.endsWith(".svg")) {
+            const innerElement = await fetch(path);
             const innerContent = await innerElement.text();
             images[i].setAttribute("href", encodeSVG(innerContent));
+        } else if (innerImg.endsWith(".png")) {
+            const innerContentDataUrl = await urlContentToBase64(path);
+            images[i].setAttribute("href", innerContentDataUrl);
         }
     }
 
@@ -54,27 +69,31 @@ async function inlineSVGAsync(svg) {
 }
 
 async function generateCardAsync() {
-    var ssid = $('#ssid').val();
-    var enc = $('#enc').val();
-    var password = (enc != 'nopass' ? $('#password').val() : '');
-    var templateObj = $('#templateCarousel').find('div.active').find('object')[0];
-    var template = templateObj.dataset.template;
-    var hidden = $('#hidden').is(':checked');
+    const ssid = $('#ssid').val();
+    const encryption = $('#encryption').val();
+    const password = (encryption != 'nopass' ? $('#password').val() : '');
+    const templateObj = $('#templateCarousel').find('div.active').find('object')[0];
+    const templateUrl = templateObj.data;
+    const url = new URL(templateUrl);
+    const relativePath = url.pathname.substring(0, url.pathname.lastIndexOf("/"));
 
-    var qrcodeData = generateQRCode(ssid, enc, password, hidden);
+    const hidden = $('#hidden').is(':checked');
 
-    var cardData = {
+    const qrcodeData = generateQRCode(ssid, encryption, password, hidden);
+
+    const cardData = {
         ssid: ssid,
-        encryption: enc,
+        encryption: encryption,
         password: password,
-        template: template,
-        templateUrl: "./templates/" + template,
+        templateUrl: templateUrl,
+        relativePath: relativePath,
         qrcodeData: qrcodeData,
     };
 
-    var contents = await generateCardFromTemplateAsync(cardData);
-    encodedSVG = encodeSVG(await inlineSVGAsync(contents));
-    var objtag = document.createElement("object");
+    const contents = await generateCardFromTemplateAsync(cardData);
+    const encodedSVG = encodeSVG(await inlineSVGAsync(contents, cardData.relativePath));
+
+    const objtag = document.createElement("object");
     objtag.type = "image/svg+xml";
     objtag.data = encodedSVG;
     $('#linkcard').html(objtag);
@@ -93,7 +112,7 @@ async function generateCardFromTemplateAsync(cardData) {
     var req = await fetch(cardData.templateUrl);
     var contents = await req.text();
     contents = contents
-        .replace("qrcode-placeholder.png", encodeSVG(cardData.qrcodeData))
+        .replace("connectify-qrcode-placeholder.png", encodeSVG(cardData.qrcodeData))
         // .replace("{svg_qrcode_placeholder}", cardData.qrcodeData)
         .replace("{network_name}", cardData.ssid)
         .replace("{network_password}", cardData.password)
