@@ -50,6 +50,14 @@
     .text-background {
       fill: #ff8000;
     }
+
+    .instructions {
+      font-size: 8pt;
+    }
+
+    .connectify {
+      font-size: 6pt;
+    }
   </style>
 
   <rect id="frame" width="100%" height="100%" rx="10px" ry="10px"/>
@@ -68,7 +76,13 @@
   <image id="qrcode" width="60%" x="15%" y="85%" transform="scale(0.7)"
     href="connectify-qrcode-placeholder.png"/>
   <image x="325%" y="310%" transform="scale(0.2)" href="./iphone-nfc.svg"/>
-  <text id="connectText" class="text" style="font-size: 8pt" x="50%" y="92%">
+  <text id="connectText" class="text instructions" x="50%" y="92%">
     TAP OR SCAN TO CONNECT
   </text>
+
+  <text id="connectify" class="text connectify" x="66%" y="98%">
+    Created with ConnectiFy
+  </text>
+  <image id="connectify-qrcode" x="88%" y="93%" with="6%" height="6%"
+    href="./connectify-qrcode.png"/>
 </svg>

@@ -46,6 +46,15 @@
       text-anchor: middle;
       dominant-baseline: middle;
     }
+
+    .instructions {
+      font-size: 8pt;
+    }
+
+    .connectify {
+      font-size: 6pt;
+      fill: #a0a0a0;
+    }
   </style>
   <defs>
     <linearGradient id="frame-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -78,6 +87,12 @@
   <text id="passwordLabel" class="text" x="50%" y="40%">PASSWORD</text>
   <text id="passwordText" class="password" x="50%" y="45%">{network_password}</text>
 
-  <image id="qrcode" width="60%" x="20%" y="53%" href="connectify-qrcode-placeholder.png"/>
-  <text id="connectText" class="text" style="font-size: 8pt" x="50%" y="95%">SCAN TO CONNECT</text>
+  <image id="qrcode" width="60%" x="20%" y="50%" href="connectify-qrcode-placeholder.png"/>
+  <text id="connectText" class="text instructions" x="50%" y="92%">SCAN TO CONNECT</text>
+
+  <text id="connectify" class="text connectify" x="66%" y="98%">
+    Created with ConnectiFy
+  </text>
+  <image id="connectify-qrcode" x="88%" y="93%" with="6%" height="6%"
+    href="./connectify-qrcode.png"/>
 </svg>
