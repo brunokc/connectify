@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
     .logo {
       font-size: 28pt;
-      /* font-weight: bold; */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       stroke: white;
       fill: white;
@@ -33,11 +32,11 @@
       </feComponentTransfer>
     </filter>
   </defs>
-  <rect id="frame" width="100%" height="100%" rx="20px" ry="20px" fill="url(#background-gradient)"/>
+  <rect id="frame" x="0" y="0" width="100%" height="100%" rx="20px" ry="20px" fill="url(#background-gradient)"/>
   <rect id="inner-frame" x="2%" y="8%" width="96%" height="84%" rx="10px" ry="10px" filter="url(#inset-shadow)"
     fill="url(#background-gradient)"/>
-  <image x="0" y="0" heigth="100%" width="100%" filter="url(#background-blend)"
-    href="connectify-qrcode-noborders.png"/>
+  <image id="qrcode-background" x="0" y="0" heigth="100%" width="100%" filter="url(#background-blend)"
+    href="./connectify-qrcode-noborders.png"/>
   <g fill="white">
     <svg id="wifi-logo" x="20%" y="12%" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
       <path d="M 6.4 13 C 11.4 9.2 17.6 7 24 7 C 30.4 7 36.6 9.2 41.6 13 C 42.6 13.6 43.8 13.6 44.6 12.8
