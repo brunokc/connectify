@@ -293,7 +293,7 @@
         const pwd = $("#password");
         if ($(this).is(":checked")) {
           const length = parseInt($("#passwordLength").val());
-          const password = generateBase64Password(length);
+          const password = generatePassword(length);
 
           // Save any previous typed password
           oldpassvalue = pwd.val();

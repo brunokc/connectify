@@ -1,23 +1,27 @@
 
 function genRandom(max) {
-    const arraySize = Math.round((Math.log2(max) + 1) / 8);
-    const values = window.crypto.getRandomValues(new Uint8Array(arraySize));
-    const value = values.reduce((prev, curr, idx) => { return prev * 8 + curr; });
-    return value % max;
+    // const arraySize = Math.round((Math.log2(max) + 1) / 8);
+    // const values = window.crypto.getRandomValues(new Uint8Array(arraySize));
+    const values = window.crypto.getRandomValues(new Uint8Array(8));
+    const value = values.reduce((prev, cur, idx) => { return (prev << 8) + cur; });
+    return Math.abs(value) % max;
 }
 
-function shuffle(array) {
-    let newArray = Array(array.length);
-    i = array.length;
-    while(i--) newArray[i] = array[i];
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+//  Fisher-Yates (aka Knuth) Shuffle.
+function shuffle(str) {
+    let array = str.split("");
+    let index = array.length;
 
-    for (var i = 0; i < newArray.length; i++) {
-        var idx = genRandom(newArray.length);
-        const tmp = newArray[idx];
-        newArray[idx] = newArray[i];
-        newArray[i] = tmp;
+    while (index > 0) {
+        let randomIndex = Math.floor(Math.random() * index);
+        index--;
+
+        // Swap elements
+        [array[index], array[randomIndex]] = [array[randomIndex], array[index]];
     }
-    return newArray;
+
+    return array.join("");
 }
 
 function generatePassword(length) {
@@ -27,9 +31,8 @@ function generatePassword(length) {
     const numbers = '0123456789';
     const all = shuffle(specials + lowercase + uppercase + numbers);
 
-    const picks = genRandom(length);
     let password = "";
-    for (var i = 0; i < picks; i++) {
+    for (var i = 0; i < length; i++) {
         var idx = genRandom(all.length);
         password += all[idx];
     }
@@ -38,12 +41,16 @@ function generatePassword(length) {
 }
 
 function generateBase64Password(length) {
-    const values = window.crypto.getRandomValues(new Uint8Array(32));
-    const pass = btoa(values);
-    const maxIndex = pass.length - length;
+    const base64BufferLength = 4 * length / 3;
+    let passBuffer = "";
+    while(passBuffer.length < base64BufferLength) {
+        const values = window.crypto.getRandomValues(new Uint8Array(32));
+        passBuffer += btoa(values);
+    }
+    const maxIndex = passBuffer.length - length;
     const randValues = window.crypto.getRandomValues(new Uint8Array(2));
-    const index = (randValues[0] * 256 + randValues[1]) % maxIndex;
-    return pass.substring(index, index + length);
+    const index = ((randValues[0] << 8) + randValues[1]) % maxIndex;
+    return passBuffer.substring(index, index + length);
 }
 
 // var generatePassword = function() {
@@ -57,3 +64,9 @@ function generateBase64Password(length) {
 //         window.crypto.getRandomValues(new Uint8Array(1))[0]
 //     ).join('');
 // }
+
+let cryptoApisAvailable = true;
+if (!window.crypto || !window.crypto.getRandomValues) {
+    console.log("window.crypto.getRandomValues() not available");
+    cryptoApisAvailable = false;
+}
