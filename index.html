@@ -15,13 +15,12 @@
   <link rel="stylesheet" type="text/css" media="all" href="./css/forkongithub.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/password-meter.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/advanced-bootstrap-range.css">
-  <link rel="stylesheet" type="text/css" media="print" href="./css/print.css">
   <link rel="shortcut icon" href="connectify-logo.svg" type="image/svg">
   <!-- <link rel="manifest" href="manifest.json"> -->
 </head>
 
 <body>
-  <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+  <nav class="navbar bg-dark navbar-expand-lg d-print-none" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img alt="connectify logo" widht="60" height="40" src="./images/connectify-logo-xxs.png">
@@ -40,7 +39,7 @@
     </div>
   </nav>
 
-  <div class="fork-github-ribbon float-end">
+  <div class="fork-github-ribbon float-end d-print-none">
     <span id="forkongithub">
       <a href="https://github.com/brunokc/connectify/">Fork me on GitHub</a>
     </span>
@@ -48,8 +47,8 @@
 
   <div class="container">
     <section id="generator">
-      <h1 id="title" class="my-4">ConnectiFy</h1>
-      <form id="form">
+      <h1 id="title" class="my-4 d-print-none">ConnectiFy</h1>
+      <form id="form" class="d-print-none">
         <div class="row">
           <div class="col my-auto">
             <div class="form-group has-feedback">
@@ -163,9 +162,11 @@
             </div>
             <div class="modal-body">
               <div class="linkcard m-4" id="linkcard"></div>
-              <p id="instructions-text" class="mt-3 text-center">Test you LinkCard by pointing your mobile camera here.</p>
+              <p id="instructions-text" class="mt-3 text-center d-print-none">
+                Test you LinkCard by pointing your mobile camera here.
+              </p>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-print-none">
               <a href="#" id="download" class="btn btn-primary" target="_blank" mime-type="image/svg+xml"
                 data-toggle="tooltip" title="Download your LinkCard as an SVG image">Download</a>
               <a href="javascript:window.print()" class="btn btn-primary" data-toggle="tooltip"
@@ -177,7 +178,7 @@
       </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="d-print-none">
       <h1 class="anchor mt-4">About</h1>
       <p>
         ConnectiFy provides a practical solution for simplifying Wi-Fi access for your friends and guests,
@@ -221,7 +222,7 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="d-print-none">
       <h1 class="anchor mt-3">Contact</h1>
       <p>
         ConnectiFy was written by <a href="https://github.com/brunokc/">Bruno K. da Costa</a>,
@@ -234,7 +235,7 @@
     </section>
   </div>
 
-  <footer class="footer">
+  <footer class="footer d-print-none">
     <div class="container">
       <object type="image/svg+xml" data="./images/connectify-logo.svg" width="60" height="40"
         style="vertical-align: middle;" alt="connectify logo"></object>
