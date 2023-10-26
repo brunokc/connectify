@@ -15,7 +15,7 @@
   <link rel="stylesheet" type="text/css" media="all" href="./css/forkongithub.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/password-meter.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/advanced-bootstrap-range.css">
-  <link rel="shortcut icon" href="connectify-logo.svg" type="image/svg">
+  <link rel="shortcut icon" href="./images/connectify-logo.svg" type="image/svg+xml">
   <!-- <link rel="manifest" href="manifest.json"> -->
 </head>
 
@@ -79,8 +79,8 @@
               <label for="password" class="form-label">Password</label>
               <div class="input-group">
                 <span id="basic-addon-password" class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password"
-                  autocomplete="off" aria-describedby="passwordHelp" required>
+                <input type="password" id="password" name="password" class="form-control font-monospace"
+                  placeholder="Password" autocomplete="off" aria-describedby="passwordHelp" required>
                 <div class="input-group-text" data-toggle="tooltip" title="Autogenerate Wi-Fi password">
                   <input class="form-check-input m-auto me-1" type="checkbox" id="autogenpass" checked>
                   <label class="form-label m-auto" for="autogenpass">Autogenerate</label>
@@ -238,7 +238,7 @@
   <footer class="footer d-print-none">
     <div class="container">
       <object type="image/svg+xml" data="./images/connectify-logo.svg" width="60" height="40"
-        style="vertical-align: middle;" alt="connectify logo"></object>
+        class="align-middle" alt="connectify logo"></object>
       by <a href="https://github.com/brunokc">@brunokc</a>
       <br>
       <span class="qrcode-copyright">
@@ -313,7 +313,7 @@
 
         // For some reason, $("#password").trigger("input") is not working, so
         // synthesize an event to force the event listeners to run.
-        // pwd.trigger("input");
+        //pwd.trigger("input");
         triggerInput("password");
       });
 
