@@ -8,7 +8,7 @@ function genRandom(max) {
 }
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-//  Fisher-Yates (aka Knuth) Shuffle.
+// Fisher-Yates (aka Knuth) Shuffle.
 function shuffle(str) {
     let array = str.split("");
     let index = array.length;
@@ -24,17 +24,35 @@ function shuffle(str) {
     return array.join("");
 }
 
-function generatePassword(length) {
-    const specials = '!@#$%^&*()_+{}:"<>?|[];\',./`~';
+function generatePassword(length, options) {
+    if (!options) {
+        options = {
+            useLowercase: true,
+            useUppercase: true,
+            useDigits: true,
+            useSymbols: true,
+            useBrackets: true,
+        };
+    }
+    // All symbols: '`~!@#$%^&*()-_=+[{]}\|;:\'",<.>/?'
+    const symbols = '`~!@#$%^&*-_=+\|;:\'",./?';
+    const brackets = '(){}<>[]';
     const lowercase = 'abcdefghijklmnopqrstuvwxyz';
     const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const numbers = '0123456789';
-    const all = shuffle(specials + lowercase + uppercase + numbers);
+    const digits = '0123456789';
+    let pool = (options.useLowercase ? lowercase : "" )
+        + (options.useUppercase ? uppercase : "" )
+        + (options.useDigits ? digits : "")
+        + (options.useSymbols ? symbols : "")
+        + (options.useBrackets ? brackets : "");
+    pool = shuffle(pool);
 
     let password = "";
-    for (var i = 0; i < length; i++) {
-        var idx = genRandom(all.length);
-        password += all[idx];
+    if (pool.length) {
+        for (var i = 0; i < length; i++) {
+            var idx = genRandom(pool.length);
+            password += pool[idx];
+        }
     }
 
     return password;

@@ -1,0 +1,126 @@
+#title,
+#linkcard,
+.linkcard-buttons,
+#exampleContainer {
+    text-align: center;
+}
+
+#about,
+#contact {
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+/* Don't let the form get so wide and keep it centered */
+#generator {
+    min-width: 20rem;
+    max-width: 60rem;
+    margin: auto;
+}
+
+.linkcard {
+    margin: 1em;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+}
+
+.footer p {
+    margin-bottom: 0;
+    color: #777;
+}
+
+.footer-links {
+    margin: 10px 0;
+}
+
+.footer-links li {
+    display: inline;
+    padding: 0 2px;
+}
+
+.footer-links li:first-child {
+    padding-left: 0;
+}
+
+.footer .qrcode-copyright {
+    color: #999999;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+/*  */
+/* .navbar a, */
+.navbar object {
+    /* --bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 0.65);
+    --bs-navbar-hover-color: rgba(var(--bs-emphasis-color-rgb), 0.8);
+    --bs-navbar-disabled-color: rgba(var(--bs-emphasis-color-rgb), 0.3);
+    --bs-navbar-active-color: rgba(var(--bs-emphasis-color-rgb), 1);
+    --bs-navbar-brand-color: rgba(var(--bs-emphasis-color-rgb), 1);
+    --bs-navbar-brand-hover-color: rgba(var(--bs-emphasis-color-rgb), 1); */
+
+    /* --bs-emphasis-color-rgb: 0, 0, 0; */
+    /* --bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 0.65); */
+    /* --bs-navbar-hover-color: rgba(var(--bs-emphasis-color-rgb), 0.8); */
+    /* --bs-navbar-disabled-color: rgba(var(--bs-emphasis-color-rgb), 0.3); */
+    /* --bs-navbar-active-color: rgba(var(--bs-emphasis-color-rgb), 1); */
+    /* --bs-navbar-brand-color: rgba(var(--bs-emphasis-color-rgb), 1); */
+    /* --bs-navbar-brand-hover-color: rgba(var(--bs-emphasis-color-rgb), 1); */
+
+    background-color: rgba(var(--bs-dark-rgb), 1);
+    /* color: rgba(var(--bs-dark-rgb), 1); */
+    /* --bs-navbar-active-color: #fff; */
+    /* --bs-navbar-brand-color: #fff; */
+    /* --bs-navbar-brand-hover-color: #fff; */
+
+    /* --bs-nav-link-color: #fff; */
+    /* --bs-nav-link-hover-color: var(--bs-navbar-hover-color); */
+
+    /* Dark */
+    /* --bs-navbar-color: rgba(255, 255, 255, 0.55);
+    --bs-navbar-hover-color: rgba(255, 255, 255, 0.75);
+    --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
+    --bs-navbar-active-color: #fff;
+    --bs-navbar-brand-color: #fff;
+    --bs-navbar-brand-hover-color: #fff;
+    --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1); */
+}
+
+/* Make carousel wide enough so navigation arrows don't clobber content */
+#templateCarousel {
+    min-width: 320px;
+    width: 320px;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+ }
+
+.modal-backdrop {
+    opacity: 0.75 !important;
+}
+
+/*
+    Make the text on labels inlined into text controls smaller.
+    This should affects just the inlined checkbox labels we use with textboxes
+*/
+.input-group-text label,
+.dropdown-menu label {
+    font-size: calc(var(--bs-body-font-size) * 0.8);
+}
+
+/*
+.dropdown-menu .input-group-text {
+    border: 0;
+    background-color: inherit;
+    align-items:start;
+    text-align: start;
+} */

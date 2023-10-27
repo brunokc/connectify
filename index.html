@@ -11,7 +11,7 @@
   <title>ConnectiFy</title>
   <link rel="stylesheet" type="text/css" media="all" href="./css/bootstrap-5.3.2.min.css">
   <link rel="stylesheet" href="./css/bootstrap-icons-1.11.1.min.css">
-  <link rel="stylesheet" type="text/css" media="all" href="./css/style.css">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/connectify.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/forkongithub.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/password-meter.css">
   <link rel="stylesheet" type="text/css" media="all" href="./css/advanced-bootstrap-range.css">
@@ -20,10 +20,11 @@
 </head>
 
 <body>
-  <nav class="navbar bg-dark navbar-expand-lg d-print-none" data-bs-theme="dark">
+  <nav class="navbar navbar-expand-lg bg-dark d-print-none" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img alt="connectify logo" widht="60" height="40" src="./images/connectify-logo-xxs.png">
+        <!-- <object class="align-middle" width="60" height="40" data="./images/connectify-logo.svg"></object> -->
         ConnectiFy
       </a>
       <div id="navbar" class="collapse navbar-collapse">
@@ -39,7 +40,7 @@
     </div>
   </nav>
 
-  <div class="fork-github-ribbon float-end d-print-none">
+  <div class="fork-github-ribbon text-end d-print-none">
     <span id="forkongithub">
       <a href="https://github.com/brunokc/connectify/">Fork me on GitHub</a>
     </span>
@@ -49,106 +50,166 @@
     <section id="generator">
       <h1 id="title" class="my-4 d-print-none">ConnectiFy</h1>
       <form id="form" class="d-print-none">
-        <div class="row">
-          <div class="col my-auto">
-            <div class="form-group has-feedback">
-              <label for="ssid" class="form-label">SSID</label>
-              <div class="input-group mb-3">
-                <span id="basic-addon-ssid" class="input-group-text"><i class="bi bi-reception-4"></i></span>
-                <input type="text" id="ssid" name="ssid" class="form-control" placeholder="SSID"
-                  aria-describedby="basic-addon-ssid" required>
-                <div class="input-group-text" data-toggle="tooltip" title="Is your network hidden?">
-                  <input class="form-check-input m-auto me-1" type="checkbox" id="hidden">
-                  <label class="form-label m-auto" for="hidden">Hidden</label>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group mb-3">
-              <label for="encryption" class="form-label">Encryption</label>
-              <div class="input-group">
-                <select name="encryption" id="encryption" class="form-select">
-                  <option value="WPA">WPA/WPA2/WPA3</option>
-                  <option value="WEP">WEP</option>
-                  <option value="nopass">None</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group has-feedback mb-3" id="password-p">
-              <label for="password" class="form-label">Password</label>
-              <div class="input-group">
-                <span id="basic-addon-password" class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                <input type="password" id="password" name="password" class="form-control font-monospace"
-                  placeholder="Password" autocomplete="off" aria-describedby="passwordHelp" required>
-                <div class="input-group-text" data-toggle="tooltip" title="Autogenerate Wi-Fi password">
-                  <input class="form-check-input m-auto me-1" type="checkbox" id="autogenpass" checked>
-                  <label class="form-label m-auto" for="autogenpass">Autogenerate</label>
-                </div>
-              </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
               <div class="form-group">
-                <!-- <label for="passwordLength" class="form-label">Password Length</label> -->
-                <input id="passwordLength" type="range" class="form-range range-with-labels"
-                  title="Password length" min="12" max="22" step="1" value="16">
-                <div class="range-labels text-body-tertiary"></div>
-              </div>
-              <div>
-                <div class="password-meter">
-                  <div class="meter-section rounded me-2"></div>
-                  <div class="meter-section rounded me-2"></div>
-                  <div class="meter-section rounded me-2"></div>
-                  <div class="meter-section rounded"></div>
-                </div>
-                <div id="passwordHelp" class="form-text text-muted">
-                  Use 12 or more characters with a mix of letters, numbers & symbols.
-                </div>
-              </div>
-              <!-- <div class="input-group" data-toggle="tooltip" title="Autogenerate Wi-Fi password">
-                <input class="form-check-input me-1" type="checkbox" id="autogenpass" checked>
-                <label class="form-label" for="autogenpass">Autogenerate Password</label>
-              </div> -->
-            </div>
-            <!-- <div class="form-check mb-3">
-            </div> -->
-          </div>
-
-          <div class="col-auto">
-            <div class="form-group has-feedback mb-3" id="template-p">
-              <label class="form-label">LinkCard Template</label>
-              <div class="input-group">
-                <div id="templateCarousel" class="carousel slide p-2">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <object type="image/svg+xml" data="./templates/card.svg"></object>
-                    </div>
-                    <div class="carousel-item">
-                      <object type="image/svg+xml" data="./templates/card2-black.svg"></object>
-                    </div>
-                    <div class="carousel-item">
-                      <object type="image/svg+xml" data="./templates/card2-white.svg"></object>
-                    </div>
-                    <div class="carousel-item">
-                      <object type="image/svg+xml" data="./templates/card3.svg"></object>
-                    </div>
-                    <div class="carousel-item">
-                      <object type="image/svg+xml" data="./templates/card4.svg"></object>
-                    </div>
+                <label for="ssid" class="form-label">SSID</label>
+                <div class="input-group mb-3">
+                  <span id="basic-addon-ssid" class="input-group-text"><i class="bi bi-reception-4"></i></span>
+                  <input type="text" id="ssid" name="ssid" class="form-control" placeholder="SSID"
+                    aria-describedby="basic-addon-ssid" required>
+                  <div class="input-group-text" data-toggle="tooltip" title="Is your network hidden?">
+                    <input class="form-check-input m-auto me-1" type="checkbox" id="hidden">
+                    <label class="form-label m-auto" for="hidden">Hidden</label>
                   </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#templateCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="encryption" class="form-label">Encryption</label>
+                <div class="input-group">
+                  <select name="encryption" id="encryption" class="form-select">
+                    <option value="WPA">WPA/WPA2/WPA3</option>
+                    <option value="WEP">WEP</option>
+                    <option value="nopass">None</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group mb-3" id="password-p">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                  <input type="password" id="password" name="password" class="form-control font-monospace"
+                    placeholder="Password" autocomplete="off" aria-describedby="passwordHelp" required>
+                    <!--
+                  <div class="input-group-text" data-toggle="tooltip" title="Autogenerate Wi-Fi password">
+                  <!-- <div class="textbox-inline-checkbox" data-toggle="tooltip" title="Autogenerate Wi-Fi password">
+                    <input class="form-check-input m-auto me-1" type="checkbox" id="autogenpass" checked>
+                    <label class="form-label m-auto" for="autogenpass">Autogenerate</label>
+                  </div>
+                -->
+                  <button class="btn btn-outline-secondary dropdown-toggle rounded-end d-none d-sm-block"
+                    type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                    Options
                   </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#templateCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
+                  <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split d-sm-none"
+                    type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                    aria-expanded="false">
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <div class="dropdown-item" data-toggle="tooltip" title="Autogenerate Wi-Fi password">
+                        <input class="form-check-input me-1" type="checkbox" id="autogenpass" checked>
+                        <label class="form-label" for="autogenpass">Autogenerate</label>
+                      </div>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                      <div class="dropdown-item ms-3" data-toggle="tooltip" title="Use lowercase characters">
+                        <input class="form-check-input me-1 pass-auto-gen-control" type="checkbox"
+                          id="passUseLowercase" checked>
+                        <label class="form-label" for="passUseLowercase">Use lowercase</label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item ms-3" data-toggle="tooltip" title="Use uppercase characters">
+                        <input class="form-check-input me-1 pass-auto-gen-control" type="checkbox"
+                          id="passUseUppercase" checked>
+                        <label class="form-label" for="passUseUppercase">Use uppercase</label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item ms-3" data-toggle="tooltip" title="Use digits">
+                        <input class="form-check-input me-1 pass-auto-gen-control" type="checkbox"
+                          id="passUseDigits" checked>
+                        <label class="form-label" for="passUseDigits">Use digits</label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item ms-3" data-toggle="tooltip" title="Use symbols">
+                        <input class="form-check-input me-1 pass-auto-gen-control" type="checkbox"
+                          id="passUseSymbols" checked>
+                        <label class="form-label" for="passUseSymbols">Use symbols</label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item ms-3" data-toggle="tooltip" title="Use brackets">
+                        <input class="form-check-input me-1 pass-auto-gen-control" type="checkbox"
+                          id="passUseBrackets" checked>
+                        <label class="form-label" for="passUseBrackets">Use brackets</label>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="form-group">
+                  <!-- <label for="passwordLength" class="form-label">Password Length</label> -->
+                  <input id="passwordLength" type="range" title="Password length"
+                    min="12" max="22" step="1" value="16"
+                    class="form-range range-with-labels range-with-notches pass-auto-gen-control">
+                  <!-- <div class="range-notches text-body-tertiary"></div> -->
+                  <div class="range-labels text-body-tertiary"></div>
+                </div>
+                <div>
+                  <div class="password-meter">
+                    <div class="meter-section rounded me-2" data-toogle="tooltip" title="Weak"></div>
+                    <div class="meter-section rounded me-2" data-toogle="tooltip" title="Medium"></div>
+                    <div class="meter-section rounded me-2" data-toogle="tooltip" title="Good"></div>
+                    <div class="meter-section rounded" data-toogle="tooltip" title="Very good"></div>
+                  </div>
+                  <div id="passwordHelp" class="form-text text-muted">
+                    Use 12 or more characters with a mix of letters, numbers & symbols.
+                  </div>
+                </div>
+                <!-- <div class="input-group" data-toggle="tooltip" title="Autogenerate Wi-Fi password">
+                  <input class="form-check-input me-1" type="checkbox" id="autogenpass" checked>
+                  <label class="form-label" for="autogenpass">Autogenerate Password</label>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group mb-3 text-center" id="template-p">
+                <label class="form-label">LinkCard Template</label>
+                <div class="input-group">
+                  <!-- Using dark theme to get dark previous/next arrows -->
+                  <div id="templateCarousel" class="carousel slide p-2 col-centered" data-bs-theme="dark">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <object type="image/svg+xml" data="./templates/card.svg"></object>
+                      </div>
+                      <div class="carousel-item">
+                        <object type="image/svg+xml" data="./templates/card2-black.svg"></object>
+                      </div>
+                      <div class="carousel-item">
+                        <object type="image/svg+xml" data="./templates/card2-white.svg"></object>
+                      </div>
+                      <div class="carousel-item">
+                        <object type="image/svg+xml" data="./templates/card3.svg"></object>
+                      </div>
+                      <div class="carousel-item">
+                        <object type="image/svg+xml" data="./templates/card4.svg"></object>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#templateCarousel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#templateCarousel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group text-center">
-            <button id="generate" type="submit" class="btn btn-primary">Generate LinkCard</button>
+            <div class="form-group text-center">
+              <button id="generate" type="submit" class="btn btn-primary">Generate LinkCard</button>
+            </div>
           </div>
         </div>
       </form>
@@ -167,7 +228,7 @@
               </p>
             </div>
             <div class="modal-footer d-print-none">
-              <a href="#" id="download" class="btn btn-primary" target="_blank" mime-type="image/svg+xml"
+              <a href="#" id="download" class="btn btn-primary" target="_blank" type="image/svg+xml"
                 data-toggle="tooltip" title="Download your LinkCard as an SVG image">Download</a>
               <a href="javascript:window.print()" class="btn btn-primary" data-toggle="tooltip"
                 title="Print the QR code">Print</a>
@@ -257,6 +318,7 @@
 
   <script type="text/javascript">
     let oldpassvalue = "";
+
     $(document).ready(() => {
       $('#form').on("submit", function() {
         generateCardAsync();
@@ -291,24 +353,33 @@
       }
 
       $("#autogenpass").on("change", function() {
+        const autogenDisabled = !$(this).is(":checked");
+
+        // Enable/disable subordinate controls
+        $(".pass-auto-gen-control")
+          .prop({ disabled: autogenDisabled })
+          .parent().toggleClass("disabled", autogenDisabled);
+
         const pwd = $("#password");
-        if ($(this).is(":checked")) {
+        if (autogenDisabled) {
+          // Restore any previous typed password
+          pwd.attr("type", "password");
+          pwd.val(oldpassvalue);
+          oldpassvalue = "";
+        } else {
           const length = parseInt($("#passwordLength").val());
-          const password = generatePassword(length);
+          const password = generatePassword(length, {
+            useLowercase: $("#passUseLowercase").is(":checked"),
+            useUppercase: $("#passUseUppercase").is(":checked"),
+            useDigits: $("#passUseDigits").is(":checked"),
+            useSymbols: $("#passUseSymbols").is(":checked"),
+            useBrackets: $("#passUseBrackets").is(":checked"),
+          });
 
           // Save any previous typed password
           oldpassvalue = pwd.val();
           pwd.val(password);
           pwd.attr("type", "text");
-
-          $("#passwordLength").prop("disabled", false);
-        } else {
-          // Restore any previous typed password
-          pwd.attr("type", "password");
-          pwd.val(oldpassvalue);
-          oldpassvalue = "";
-
-          $("#passwordLength").prop("disabled", true);
         }
 
         // For some reason, $("#password").trigger("input") is not working, so
@@ -317,9 +388,11 @@
         triggerInput("password");
       });
 
+      $(".pass-auto-gen-control").on("change", function() {
+        $("#autogenpass").trigger("change");
+      });
+
       $("#passwordLength").on("input", function() {
-        const newLength = $(this).val();
-        $("#passwordLengthDisplay").text(newLength);
         // Trigger 'change' event on the autogenerate checkbox so a new password
         // is generated and its strength is re-evaluated.
         $("#autogenpass").trigger("change");

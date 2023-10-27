@@ -1,12 +1,11 @@
 function escapeString(string) {
-    var to_escape = ['\\', ';', ',', ':', '"'];
-    var hex_only = /^[0-9a-f]+$/i;
-    var output = "";
-    for (var i = 0; i < string.length; i++) {
+    const to_escape = ['\\', ';', ',', ':', '"'];
+    const hex_only = /^[0-9a-f]+$/i;
+    let output = "";
+    for (let i = 0; i < string.length; i++) {
         if ($.inArray(string[i], to_escape) != -1) {
             output += '\\' + string[i];
-        }
-        else {
+        } else {
             output += string[i];
         }
     }
@@ -15,16 +14,16 @@ function escapeString(string) {
 
 function generateQRCode(ssid, encryption, password, hidden) {
     // https://github.com/zxing/zxing/wiki/Barcode-Contents#wi-fi-network-config-android-ios-11
-    var qrstring = 'WIFI:S:' + escapeString(ssid) + ';T:' + encryption +
+    let qrstring = 'WIFI:S:' + escapeString(ssid) + ';T:' + encryption +
         ';P:' + escapeString(password) + ';';
     if (hidden) {
         qrstring += 'H:true';
     }
     qrstring += ';';
 
-    var typeNumber = 0; // autodetect
-    var errorCorrectionLevel = 'L';
-    var qr = qrcode(typeNumber, errorCorrectionLevel);
+    const typeNumber = 0; // autodetect
+    const errorCorrectionLevel = 'L';
+    const qr = qrcode(typeNumber, errorCorrectionLevel);
     qr.addData(qrstring);
     qr.make();
     return qr.createSvgTag();
@@ -45,22 +44,22 @@ async function urlContentToBase64(url) {
     });
 }
 
-// Find any external SVG and inline them into the primary one.
-// Currently we only look for external SVGs onlin in <image> tags.
+// Find any external resources (SVGs and PNGs for now) and inline them into the SVG.
+// Currently we only look for external resources in <image> elements.
 async function inlineSVGAsync(svg, relativePath) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(svg, "text/xml");
     const images = doc.getElementsByTagName("image");
-    for (var i = 0; i < images.length; i++) {
-        let innerImg = images[i].href.baseVal;
+    for (let img of images) {
+        let innerImg = img.href.baseVal;
         const path = relativePath + "/" + innerImg;
         if (innerImg.endsWith(".svg")) {
             const innerElement = await fetch(path);
             const innerContent = await innerElement.text();
-            images[i].setAttribute("href", encodeSVG(innerContent));
+            img.setAttribute("href", encodeSVG(innerContent));
         } else if (innerImg.endsWith(".png")) {
             const innerContentDataUrl = await urlContentToBase64(path);
-            images[i].setAttribute("href", innerContentDataUrl);
+            img.setAttribute("href", innerContentDataUrl);
         }
     }
 
@@ -98,22 +97,16 @@ async function generateCardAsync() {
     objtag.data = encodedSVG;
     $('#linkcard').html(objtag);
 
-    // $('#showssid').text('SSID: ' + ssid);
-    // $('#save').show();
-    // $('#print').css('display', 'inline-block');
-
-    var e = $('#download');
+    const e = $('#download');
     e.attr('href', encodedSVG);
-    e.attr('download', 'connectify-' + ssid + '.svg');
-    e.css('display', 'inline-block');
+    e.attr('download', 'connectify-linkcard-' + ssid + '.svg');
 }
 
 async function generateCardFromTemplateAsync(cardData) {
-    var req = await fetch(cardData.templateUrl);
-    var contents = await req.text();
+    const req = await fetch(cardData.templateUrl);
+    let contents = await req.text();
     contents = contents
         .replace("connectify-qrcode-placeholder.png", encodeSVG(cardData.qrcodeData))
-        // .replace("{svg_qrcode_placeholder}", cardData.qrcodeData)
         .replace("{network_name}", cardData.ssid)
         .replace("{network_password}", cardData.password)
 
