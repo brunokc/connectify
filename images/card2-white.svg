@@ -75,7 +75,6 @@
   </svg>
   <text id="networkLabel" class="text" x="50%" y="25%">NETWORK</text>
   <text id="networkName" class="ssid" x="50%" y="30%">My WiFi Network</text>
-  <!-- <text id="networkNotes" class="text" x="50%" y="80%" font-size="8pt">(2.4GHz and 5GHz)</text> -->
   <text id="passwordLabel" class="text" x="50%" y="37%">PASSWORD</text>
   <text id="passwordText" class="password" x="50%" y="42%">my_wifi_p@ssw0rd</text>
 

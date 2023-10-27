@@ -2,8 +2,6 @@
 <svg width="204px" height="322px" viewBox="0 0 204 322" xmlns="http://www.w3.org/2000/svg">
   <style>
     #frame {
-      /* stroke: #555555;
-      fill: #555555; */
       stroke: none;
       fill: url(#frame-gradient);
       stroke-linejoin: round;
@@ -20,17 +18,11 @@
     }
 
     #wifi-logo {
-      /* stroke: #e0e0e0; */
       fill: white;
-    }
-
-    #qrcode {
-      /* transform: translate(-50%, -50%); */
     }
 
     .text {
       fill: white;
-      /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-size: 10pt;
       text-anchor: middle;
@@ -39,7 +31,6 @@
 
     .ssid {
       fill: white;
-      /* font: bold 10pt Calibri; */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-weight: bold;
       font-size: 10pt;
@@ -49,7 +40,6 @@
 
     .password {
       fill: white;
-      /* font: bold 11pt Consolas; */
       font-family: Consolas, 'Courier New', Courier, monospace;
       font-size: 11pt;
       font-weight: bold;
@@ -85,7 +75,6 @@
   </svg>
   <text id="networkLabel" class="text" x="50%" y="25%">NETWORK</text>
   <text id="networkName" class="ssid" x="50%" y="30%">My WiFi Network</text>
-  <!-- <text id="networkNotes" class="text" x="50%" y="80%" font-size="8pt">(2.4GHz and 5GHz)</text> -->
   <text id="passwordLabel" class="text" x="50%" y="40%">PASSWORD</text>
   <text id="passwordText" class="password" x="50%" y="45%">my_wifi_p@ssw0rd</text>
 
