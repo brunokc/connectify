@@ -81,12 +81,12 @@
     <path d="M12.0001 21.5C13.1047 21.5 14.0001 20.6046 14.0001 19.5C14.0001 18.3954 13.1047 17.5
       12.0001 17.5C10.8955 17.5 10.0001 18.3954 10.0001 19.5C10.0001 20.6046 10.8955 21.5 12.0001 21.5Z"/>
   </svg>
-  <text id="networkLabel" class="text" x="50%" y="25%">NETWORK</text>
-  <text id="networkName" class="ssid" x="50%" y="30%">{network_name}</text>
+  <text id="networkLabel" class="text" x="50%" y="23%">NETWORK</text>
+  <text id="networkName" class="ssid" x="50%" y="28%">{network_name}</text>
   <text id="passwordLabel" class="text" x="50%" y="37%">PASSWORD</text>
   <text id="passwordText" class="password" x="50%" y="42%">{network_password}</text>
 
-  <image id="qrcode" width="60%" x="20%" y="50%" href="connectify-qrcode-placeholder.png"/>
+  <image id="qrcode" width="62%" x="19%" y="49%" href="connectify-qrcode-placeholder.png"/>
   <text id="connectText" class="text instructions" x="50%" y="92%">SCAN TO CONNECT</text>
 
   <text id="connectify" class="text connectify" x="66%" y="98%">
