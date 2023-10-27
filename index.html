@@ -375,6 +375,9 @@
           pwd.attr("type", "text");
         }
 
+        // Trigger input on the password field so the password strength can be
+        // re-evaluated ("input" events are not automatically triggered when
+        // the value is changed programmatically).
         // For some reason, $("#password").trigger("input") is not working, so
         // synthesize an event to force the event listeners to run.
         //pwd.trigger("input");
@@ -382,16 +385,12 @@
       });
 
       $(".pass-auto-gen-control").on("change", function() {
-        $("#autogenpass").trigger("change");
-      });
-
-      $("#passwordLength").on("input", function() {
         // Trigger 'change' event on the autogenerate checkbox so a new password
-        // is generated and its strength is re-evaluated.
+        // is generated and its strength re-evaluated.
         $("#autogenpass").trigger("change");
       });
 
-      $("#passwordLength").trigger("input");
+      $("#autogenpass").trigger("change");
 
       // $("#password").trigger("input");
       // $('#form').tooltip({
